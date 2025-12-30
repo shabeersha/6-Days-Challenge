@@ -3062,6 +3062,11 @@
                 /* Reduce global padding to remove free space */
             }
 
+            /* Restore Hero padding to clear fixed navbar */
+            .hero {
+                padding: 100px 0 30px !important;
+            }
+
             /* Fix Scroll Lag & Drift: Disable heavy effects on mobile */
             .blob,
             .social-proof-blob-bottom,
