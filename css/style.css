@@ -3088,4 +3088,10 @@
                 /* Hide complex overlapping blobs on mobile if needed, or simplify */
                 filter: blur(20px) !important;
             }
+
+            /* Safari Mobile Performance Fix: Disable glassmorphism */
+            * {
+                -webkit-backdrop-filter: none !important;
+                backdrop-filter: none !important;
+            }
         }

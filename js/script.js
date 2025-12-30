@@ -146,6 +146,13 @@ document.querySelectorAll('.video-card').forEach(card => {
         };
         thumb.appendChild(video);
         autoScrollEnabled = false;
+
+        // Auto-scroll to center on mobile/desktop when playing
+        this.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+        });
     });
 });
 
