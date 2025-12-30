@@ -53,12 +53,7 @@ accordionBtns.forEach(btn => {
     });
 });
 
-// Scroll to Top Button
-const scrollTopBtn = document.querySelector('.scroll-top');
-window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-});
-scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
 
 // Navbar Scroll Effect
 const navbar = document.querySelector('.navbar');
