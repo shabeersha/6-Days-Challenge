@@ -490,15 +490,15 @@
 
         @media (max-width: 900px) {
             .hero {
-                padding: 75px 0 30px;
-                /* Ultra-compact padding */
+                padding: 64px 0 24px;
+                /* Maximum compaction */
             }
 
             .hero .container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 8px;
+                gap: 6px;
                 /* Micro gap */
                 text-align: center;
             }
@@ -515,8 +515,8 @@
 
             .hero h1 {
                 order: 2;
-                font-size: 1.5rem;
-                /* Still readable but tighter */
+                font-size: 1.35rem;
+                /* Very compact title */
                 line-height: 1.15;
                 width: 100%;
                 margin-bottom: 0;
@@ -525,7 +525,7 @@
             .hero-video {
                 order: 3;
                 width: 100%;
-                margin: 0 0 8px;
+                margin: 0 0 6px;
             }
 
             .hero-bullets {
@@ -534,12 +534,18 @@
                 display: inline-block;
                 text-align: left;
                 margin-bottom: 4px;
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 padding-left: 0;
+                line-height: 1.4;
             }
 
             .hero-bullets li {
-                padding: 2px 0 2px 24px;
+                padding: 1px 0 1px 20px;
+            }
+
+            .hero-bullets li::before {
+                font-size: 0.9em;
+                top: 2px;
             }
 
             .hero-cta-group {
@@ -549,15 +555,15 @@
             }
 
             .hero .btn-primary {
-                padding: 12px 24px;
+                padding: 10px 20px;
                 min-width: auto;
                 width: 100%;
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .micro-copy {
-                margin-top: 6px;
-                font-size: 0.75rem;
+                margin-top: 4px;
+                font-size: 0.7rem;
             }
         }
 
@@ -676,20 +682,21 @@
 
         .video-carousel {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             overflow-x: auto;
-            padding: 10px 0 20px;
+            overflow-y: hidden;
+            padding: 30px 0 50px;
+            /* Increased padding to prevent clipping */
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
         }
 
         .video-carousel::-webkit-scrollbar {
             display: none;
-        }
-
-        .video-carousel {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            /* Chrome, Safari, Opera */
         }
 
         .video-card {
