@@ -3054,3 +3054,33 @@
                 transform: translate(-50%, -50%) scale(1.15);
             }
         }
+
+        /* --- GLOBAL MOBILE OPTIMIZATIONS --- */
+        @media (max-width: 900px) {
+            section {
+                padding: 40px 0 !important;
+                /* Reduce global padding to remove free space */
+            }
+
+            /* Fix Scroll Lag & Drift: Disable heavy effects on mobile */
+            .blob,
+            .social-proof-blob-bottom,
+            .connector-blob,
+            .ambient-blob-container .blob {
+                animation: none !important;
+                filter: blur(40px) !important;
+                /* Reduce blur radius */
+                opacity: 0.3 !important;
+                transform: none !important;
+                transition: none !important;
+                will-change: auto !important;
+            }
+
+            /* Ensure how-it-works blobs don't cause lag */
+            .how-it-works::before,
+            .how-it-works::after {
+                display: none !important;
+                /* Hide complex overlapping blobs on mobile if needed, or simplify */
+                filter: blur(20px) !important;
+            }
+        }
