@@ -1,31 +1,33 @@
-// Initialize Lenis Smooth Scroll
-const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smoothHover: false,
-    smoothTouch: false,
-    touchMultiplier: 2,
-});
+// Initialize Lenis Smooth Scroll only on desktop
+let lenis;
+if (window.innerWidth > 768) {
+    lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smoothHover: false,
+        smoothTouch: false,
+        touchMultiplier: 2,
+    });
 
-function raf(time) {
-    lenis.raf(time);
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
+
+    // Integrate Lenis with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
 }
-requestAnimationFrame(raf);
 
-// Integrate Lenis with GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-});
-gsap.ticker.lagSmoothing(0);
 
-// Mobile Menu Toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelector('.nav-links');
-mobileMenuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+
 
 // FAQ Accordion
 const accordionBtns = document.querySelectorAll('.accordion-btn');
