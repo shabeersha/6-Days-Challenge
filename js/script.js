@@ -324,7 +324,19 @@ const closeModal = () => {
 };
 
 modalBtns.forEach(btn => btn.addEventListener('click', openModal));
-closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+modalBtns.forEach(btn => btn.addEventListener('click', openModal));
+
+// Specific Close Modal Logic
+document.querySelectorAll('.modal-close').forEach(btn => {
+    btn.addEventListener('click', closeModal);
+});
+
+// Overlay closing - only if NOT successful state
+document.querySelector('.modal-overlay').addEventListener('click', () => {
+    if (successMessage.style.display !== 'block') {
+        closeModal();
+    }
+});
 
 // Form Validation and Submission
 registrationForm.addEventListener('submit', (e) => {
@@ -353,11 +365,20 @@ registrationForm.addEventListener('submit', (e) => {
 
 
     if (isValid) {
-        // Mock submission
-        console.log('Registration Data:', data);
-
-        // Show success UI
+        // Optimistic UI: Show success immediately
         registrationFormContent.style.display = 'none';
         successMessage.style.display = 'block';
+
+        // Submit to Google Sheets in background
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyw4w1SkeQRAj4h10Ep2txu4vuiglQVM3ny-U6XxJpoWy_JgFaIpb996yOBjXboHFLIOQ/exec';
+
+        // Use no-cors to avoid waiting for response (fire and forget style)
+        // or just don't await the promise for UI updates
+        fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+            .catch(error => {
+                console.error('Background submission error:', error.message);
+                // Silent fail/log since user already saw success
+            });
     }
+
 });
