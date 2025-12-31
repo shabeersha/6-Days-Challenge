@@ -350,7 +350,7 @@ registrationForm.addEventListener('submit', (e) => {
     validateField('email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data['email']));
     validateField('whatsapp', /^[0-9]{10}$/.test(data['whatsapp']));
     validateField('status', data['status'] && data['status'] !== '');
-    validateField('district', data['district'] && data['district'] !== '');
+
 
     if (isValid) {
         // Mock submission
