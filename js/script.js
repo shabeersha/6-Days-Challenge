@@ -348,7 +348,7 @@ registrationForm.addEventListener('submit', (e) => {
 
     validateField('full-name', data['full-name'].trim() !== '');
     validateField('email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data['email']));
-    validateField('whatsapp', /^[0-9]{10}$/.test(data['whatsapp']));
+    validateField('mobile', /^[0-9]{10}$/.test(data['mobile']));
     validateField('status', data['status'] && data['status'] !== '');
 
 
