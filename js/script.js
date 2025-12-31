@@ -281,22 +281,7 @@ if (document.querySelector('.video-container')) {
 }
 
 
-// Hero Video Overlay Logic
-const heroVideoFrame = document.querySelector('.hero .video-frame');
-if (heroVideoFrame) {
-    const playBtn = heroVideoFrame.querySelector('.video-play-btn');
-    const iframe = heroVideoFrame.querySelector('iframe');
 
-    if (playBtn && iframe) {
-        playBtn.addEventListener('click', () => {
-            heroVideoFrame.classList.add('playing');
-            // Auto-play the video by appending autoplay=1 to src
-            if (!iframe.src.includes('autoplay=1')) {
-                iframe.src += "&autoplay=1";
-            }
-        });
-    }
-}
 
 // Modal Logic
 const modal = document.getElementById('registration-modal');

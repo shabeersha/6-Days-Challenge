@@ -9,7 +9,8 @@
         content="Join Brototype's free 6-Day Coding Sprint for beginners. Learn programming basics with 24x7 Techsupport.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="css/mux-custom.css?v=6">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
 </head>
 
 <body>
@@ -49,21 +50,13 @@
             </div>
             <div class="hero-video">
                 <div class="video-container">
-                    <div class="video-frame">
-                        <div class="video-overlay">
-                            <img src="images/NewyearVideoThumbnail.webp" alt="Cover" class="video-cover">
-                            <button class="video-play-btn" aria-label="Play Video">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 5V19L19 12L8 5Z" fill="white" />
-                                </svg>
-                            </button>
-                        </div>
-                        <iframe width="100%" height="100%" loading="lazy"
-                            src="https://www.youtube.com/embed/KvaG1dWgwLk?si=eTc8E04_l6RWb9jr"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="video-frame"
+                        style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                        <mux-player playback-id="JK3NORYDnJpK00ZF01x601yuy9bvtAyV00SnFmFWYSx9Lrg"
+                            metadata-video-title="Brototype 2026 New Year Offer"
+                            poster="images/NewyearVideoThumbnail.avif" controls accent-color="#0d9488"
+                            primary-color="#0d9488"
+                            style="width: 100%; height: 100%; aspect-ratio: 16/9; display: block; --primary-color: #0d9488; --secondary-color: #ffffff;"></mux-player>
                     </div>
                 </div>
 
