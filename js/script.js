@@ -419,8 +419,44 @@ registrationForm.addEventListener('submit', (e) => {
 
         // Execute both (Fire and forget from UI perspective)
         Promise.all([googleSheetRequest, mainServerRequest]);
+
+        // Meta Pixel Tracking - Form Submission
+        const pageName = window.location.pathname.includes('2026-new-year')
+            ? '6DaysChallenge-2026NewYearOffer'
+            : '6DaysChallenge-Graduates';
+
+        if (typeof fbq === 'function') {
+            fbq('track', 'Lead', {
+                content_name: `${pageName}-Form`,
+                value: 0.00,
+                currency: 'INR'
+            });
+        }
     }
 
+});
+
+// Meta Pixel Tracking - CTA Clicks
+document.addEventListener('DOMContentLoaded', () => {
+    // Determine page context
+    const pageContext = window.location.pathname.includes('2026-new-year')
+        ? '6DaysChallenge-2026NewYearOffer'
+        : '6DaysChallenge-Graduates';
+
+    // Select CTA buttons (Nav buttons, Hero buttons)
+    // Excluding form submit buttons
+    const ctaButtons = document.querySelectorAll('a.btn-primary, button.btn-primary:not([type="submit"])');
+
+    ctaButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof fbq === 'function') {
+                fbq('track', 'InitiateCheckout', {
+                    content_name: `${pageContext}-CTA`,
+                    content_category: 'Button Click'
+                });
+            }
+        });
+    });
 });
 
 // UTM Parameter Population
