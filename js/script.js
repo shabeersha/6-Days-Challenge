@@ -323,9 +323,35 @@ document.querySelector('.modal-overlay').addEventListener('click', () => {
     }
 });
 
+// Initialize intl-tel-input
+const phoneInput = document.querySelector("#mobile");
+let iti;
+if (phoneInput) {
+    iti = window.intlTelInput(phoneInput, {
+        initialCountry: "in",
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+
+    // Fix for Lenis scroll hijacking
+    const countryList = document.querySelector('.iti__country-list');
+    if (countryList) {
+        countryList.setAttribute('data-lenis-prevent', '');
+    }
+}
+
 // Form Validation and Submission
 registrationForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    // Populate hidden country code field
+    if (iti) {
+        const countryData = iti.getSelectedCountryData();
+        const hiddenInput = document.getElementById("hiddenCountryCode");
+        if (hiddenInput && countryData.dialCode) {
+            hiddenInput.value = "+" + countryData.dialCode;
+        }
+    }
 
     let isValid = true;
     const formData = new FormData(registrationForm);
@@ -345,8 +371,10 @@ registrationForm.addEventListener('submit', (e) => {
 
     validateField('full-name', data['full-name'].trim() !== '');
     validateField('email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data['email']));
-    validateField('mobile', /^[0-9]{10}$/.test(data['mobile']));
-    validateField('status', data['status'] && data['status'] !== '');
+    // validateField('mobile', /^[0-9]{10}$/.test(data['mobile'])); // Old strict 10 digit check
+    validateField('mobile', /^[0-9]{7,15}$/.test(data['mobile'])); // More lenient for international
+    validateField('currentStatus', data['currentStatus'] && data['currentStatus'] !== '');
+
 
 
     if (isValid) {
@@ -354,16 +382,73 @@ registrationForm.addEventListener('submit', (e) => {
         registrationFormContent.style.display = 'none';
         successMessage.style.display = 'block';
 
-        // Submit to Google Sheets in background
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyw4w1SkeQRAj4h10Ep2txu4vuiglQVM3ny-U6XxJpoWy_JgFaIpb996yOBjXboHFLIOQ/exec';
+        // 1. Submit to Google Sheets (Background)
+        const googleSheetURL = 'https://script.google.com/macros/s/AKfycbyw4w1SkeQRAj4h10Ep2txu4vuiglQVM3ny-U6XxJpoWy_JgFaIpb996yOBjXboHFLIOQ/exec';
+        const googleSheetRequest = fetch(googleSheetURL, { method: 'POST', body: formData, mode: 'no-cors' })
+            .catch(error => console.error('Google Sheet Error:', error));
 
-        // Use no-cors to avoid waiting for response (fire and forget style)
-        // or just don't await the promise for UI updates
-        fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-            .catch(error => {
-                console.error('Background submission error:', error.message);
-                // Silent fail/log since user already saw success
-            });
+        // 2. Submit to Main Server API (Background)
+        const mainServerURL = 'https://support-api.brototype.com/api/users/student';
+
+        // Prepare JSON data
+        // Name Splitting Logic: If space, split; else lastName is "Nil"
+        const fullName = (data['full-name'] || '').trim();
+        let firstName = fullName;
+        let lastName = 'Nil';
+
+        if (fullName.includes(' ')) {
+            const parts = fullName.split(' ');
+            firstName = parts[0];
+            lastName = parts.slice(1).join(' '); // Joins the rest as last name
+        }
+
+        const jsonData = {
+            ...data,
+            firstName: firstName,
+            lastName: lastName,
+            duration: Number(data['duration']) // Ensure number type
+        };
+
+        const mainServerRequest = fetch(mainServerURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+        }).catch(error => console.error('Main Server API Error:', error));
+
+        // Execute both (Fire and forget from UI perspective)
+        Promise.all([googleSheetRequest, mainServerRequest]);
     }
 
+});
+
+// UTM Parameter Population
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const form = document.getElementById('registration-form');
+
+        if (form) {
+            // List of tracking parameters to look for
+            const trackingParams = [
+                'zf_referrer_name', 'zf_redirect_url', 'zc_gad',
+                'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+                'utm_id', 'utm_adgroup', 'utm_matchtype', 'utm_audience',
+                'utm_adgroupid', 'ref', 'utm_network', 'utm_placement', 'utm_hp'
+            ];
+
+            trackingParams.forEach(param => {
+                const value = urlParams.get(param);
+                if (value) {
+                    const input = form.querySelector(`input[name="${param}"]`);
+                    if (input) {
+                        input.value = value;
+                    }
+                }
+            });
+        }
+    } catch (e) {
+        console.error('Error populating tracking parameters:', e);
+    }
 });

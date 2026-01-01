@@ -312,6 +312,45 @@
             animation: float 6s ease-in-out infinite;
         }
 
+        /* Intl-Tel-Input Overrides */
+        .iti {
+            width: 100%;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .iti input {
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .iti__flag {
+            background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png");
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+            .iti__flag {
+                background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png");
+            }
+        }
+
+        /* Removed forced padding-left to let intl-tel-input calculate it dynamically */
+
+
+        /* Fix country list scroll and width */
+        .iti__country-list {
+            max-height: 200px;
+            overflow-y: auto;
+            width: 300px;
+            max-width: 85vw;
+            /* Critical fix for mobile overflow */
+            white-space: normal;
+            overscroll-behavior: contain;
+            z-index: 10000;
+        }
+
+
         .hero-video {
             width: 100%;
             max-width: 100%;
