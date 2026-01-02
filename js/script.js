@@ -436,24 +436,26 @@ registrationForm.addEventListener('submit', (e) => {
 
 });
 
-// Meta Pixel Tracking - CTA Clicks
+// Meta Pixel Tracking - CTA Clicks (Custom Granular Events)
 document.addEventListener('DOMContentLoaded', () => {
-    // Determine page context
+    // Determine page context for the event name
     const pageContext = window.location.pathname.includes('2026-new-year')
         ? '6DaysChallenge-2026NewYearOffer'
         : '6DaysChallenge-Graduates';
 
-    // Select CTA buttons (Nav buttons, Hero buttons)
-    // Excluding form submit buttons
-    const ctaButtons = document.querySelectorAll('a.btn-primary, button.btn-primary:not([type="submit"])');
+    // Select all elements with data-cta-location attribute
+    const ctaButtons = document.querySelectorAll('[data-cta-location]');
 
     ctaButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            if (typeof fbq === 'function') {
-                fbq('track', 'InitiateCheckout', {
-                    content_name: `${pageContext}-CTA`,
-                    content_category: 'Button Click'
-                });
+            const location = btn.getAttribute('data-cta-location');
+            if (location && typeof fbq === 'function') {
+                // Construct Custom Event Name
+                // Format: PageName-Location-CTA-Clicked
+                // Example: 6DaysChallenge-2026NewYearOffer-Hero-CTA-Clicked
+                const eventName = `${pageContext}-${location}-CTA-Clicked`;
+
+                fbq('track', eventName);
             }
         });
     });
