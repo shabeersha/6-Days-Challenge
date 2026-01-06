@@ -389,6 +389,8 @@ registrationForm.addEventListener('submit', (e) => {
 
         // 2. Submit to Main Server API (Background)
         const mainServerURL = 'https://support-api.brototype.com/api/users/student';
+        // const mainServerURL = 'http://localhost:3000/submit';
+
 
         // Prepare JSON data
         // Name Splitting Logic: If space, split; else lastName is "Nil"
@@ -419,6 +421,8 @@ registrationForm.addEventListener('submit', (e) => {
 
         // Execute both (Fire and forget from UI perspective)
         Promise.all([googleSheetRequest, mainServerRequest]);
+        // console.log("Form submitted successfully", JSON.stringify(jsonData));
+
 
         // Meta Pixel Tracking - Form Submission
         const pageName = window.location.pathname.includes('2026-new-year')
@@ -426,11 +430,7 @@ registrationForm.addEventListener('submit', (e) => {
             : '6DaysChallenge-Graduates';
 
         if (typeof fbq === 'function') {
-            fbq('track', 'Lead', {
-                content_name: `${pageName}-Form`,
-                value: 0.00,
-                currency: 'INR'
-            });
+            fbq('track', 'Lead');
         }
     }
 
@@ -477,8 +477,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ];
 
             trackingParams.forEach(param => {
-                const value = urlParams.get(param);
+                let value = urlParams.get(param);
                 if (value) {
+                    // Check for utm_source="Meta" and replace it
+                    if (param === 'utm_source' && value === 'Meta') {
+                        value = 'admeta malayalam';
+                    }
+
                     const input = form.querySelector(`input[name="${param}"]`);
                     if (input) {
                         input.value = value;
