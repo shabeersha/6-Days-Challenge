@@ -388,7 +388,7 @@ registrationForm.addEventListener('submit', (e) => {
             .catch(error => console.error('Google Sheet Error:', error));
 
         // 2. Submit to Main Server API (Background)
-        // const mainServerURL = 'https://support-api.brototype.com/api/users/student';
+        const mainServerURL = 'https://support-api.brototype.com/api/users/student';
         // const mainServerURL = 'http://localhost:3000/submit';
 
 
