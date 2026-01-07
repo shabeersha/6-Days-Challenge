@@ -9,6 +9,8 @@
         content="Join Brototype's free 6-Day Coding Sprint for beginners. Learn programming basics with 24x7 Techsupport.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Intl-Tel-Input CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 
     <!-- Meta Pixel Code -->
     <script>
@@ -302,6 +304,26 @@
                     <h3>Start the 6 Days</h3>
                     <p>Enter your details. We'll send the link.</p>
                     <form id="registration-form">
+                        <!-- Hidden Inputs for Tracking -->
+                        <input type="hidden" name="zf_referrer_name" value="">
+                        <input type="hidden" name="zf_redirect_url" value="">
+                        <input type="hidden" name="zc_gad" value="">
+                        <input type="hidden" name="utm_source" value="">
+                        <input type="hidden" name="utm_medium" value="">
+                        <input type="hidden" name="utm_campaign" value="">
+                        <input type="hidden" name="utm_term" value="">
+                        <input type="hidden" name="utm_content" value="">
+                        <input type="hidden" name="utm_id" value="">
+                        <input type="hidden" name="utm_adgroup" value="">
+                        <input type="hidden" name="utm_matchtype" value="">
+                        <input type="hidden" name="utm_audience" value="">
+                        <input type="hidden" name="utm_adgroupid" value="">
+                        <input type="hidden" name="ref" value="">
+                        <input type="hidden" name="utm_network" value="">
+                        <input type="hidden" name="utm_placement" value="">
+                        <input type="hidden" name="utm_hp" value="">
+                        <input type="hidden" name="source" value="6-Days-Basic-Programming">
+
                         <input type="hidden" name="language" value="Malayalam">
                         <input type="hidden" name="domain" value="Basic Coding">
                         <input type="hidden" name="duration" value="6">
@@ -318,13 +340,16 @@
                         </div>
                         <div class="form-group">
                             <label for="mobile">Phone Number</label>
-                            <input type="tel" id="mobile" name="mobile" placeholder="10-digit number" required
-                                pattern="[0-9]{10}">
+                            <input type="hidden" name="countryCode" id="hiddenCountryCode">
+                            <!-- Helper for intl-tel-input width -->
+                            <div>
+                                <input type="tel" id="mobile" name="mobile" placeholder="Phone number" required>
+                            </div>
                             <span class="error-message">Enter a valid 10-digit number</span>
                         </div>
                         <div class="form-group">
-                            <label for="status">Current Status</label>
-                            <select id="status" name="status" required>
+                            <label for="currentStatus">Current Status</label>
+                            <select id="currentStatus" name="currentStatus" required>
                                 <option value="" disabled selected>Select your status</option>
                                 <option value="student">College Student</option>
                                 <option value="graduate">Graduate (Job Seeker)</option>
@@ -380,6 +405,8 @@
     <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Intl-Tel-Input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
     <script src="js/script.js"></script>
