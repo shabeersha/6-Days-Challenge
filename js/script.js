@@ -424,7 +424,7 @@ registrationForm.addEventListener('submit', (e) => {
         // console.log("Form submitted successfully", JSON.stringify(jsonData));
 
         // Mixpanel Tracking - Form Submission
-        mixpanel.track("Form Submitted"+getRef(), {
+        mixpanel.track("Form Submitted "+getRef(), {
             page_url: window.location.href,
             page_path: window.location.pathname,
             ref: getRef(),
