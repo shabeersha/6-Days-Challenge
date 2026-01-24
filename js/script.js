@@ -423,6 +423,13 @@ registrationForm.addEventListener('submit', (e) => {
         Promise.all([googleSheetRequest, mainServerRequest]);
         // console.log("Form submitted successfully", JSON.stringify(jsonData));
 
+        // Mixpanel Tracking - Form Submission
+        mixpanel.track("Form Submitted"+getRef(), {
+            page_url: window.location.href,
+            page_path: window.location.pathname,
+            ref: getRef(),
+            traffic_source: getTrafficSource()
+        });
 
         // Meta Pixel Tracking - Form Submission
         const pageName = window.location.pathname.includes('2026-new-year')

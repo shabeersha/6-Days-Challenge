@@ -32,7 +32,7 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=24870027019336969&ev=PageView-ProLearningTipsByJobin&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
-    <!-- Paste this right before your closing </head> tag -->
+    <!-- Mixpanel Code -->
     <script type="text/javascript">
         (function (e, c) {
             if (!c.__SV) {
@@ -50,6 +50,7 @@
         })
 
     </script>
+    <!-- Mixpanel Code End -->
 </head>
 
 <body>
@@ -417,6 +418,37 @@
     <!-- Lenis Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
     <script src="js/script.js"></script>
+
+
+    <!-- Ref handling + session storage for Mixpanel tracking -->
+    <script>
+            (function () {
+                const params = new URLSearchParams(window.location.search);
+                const ref = params.get("ref");
+
+                if (ref) {
+                    sessionStorage.setItem("ref", ref);
+                }
+            })();
+
+        function getRef() {
+            return sessionStorage.getItem("ref") || "direct";
+        }
+
+        function getTrafficSource() {
+            return getRef() === "direct" ? "direct" : "referral";
+        }
+    </script>
+
+    <script>
+        mixpanel.track("Page View"+getRef(), {
+            page_url: window.location.href,
+            page_path: window.location.pathname,
+            ref: getRef(),
+            traffic_source: getTrafficSource()
+        });
+    </script>
+    <!-- Mixpanel Code End -->
 
 </body>
 
