@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Brototype | Master Cyber Security for FREE</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#bcf906",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#0a0a0a",
+                        "cyber-accent": "#00f3ff",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            background-image:
+                radial-gradient(circle at 2px 2px, rgba(188, 249, 6, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .cyber-grid {
+            background-image: linear-gradient(rgba(188, 249, 6, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(188, 249, 6, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-white selection:bg-primary selection:text-black">
+    <!-- Sticky Header -->
+    <header
+        class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="Assets/images/Brototype-without-tagline-white-LOGO-SVG.svg" alt="Brototype Logo"
+                    class="h-8 md:h-10">
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <nav class="flex gap-6 text-sm font-medium">
+                    <a class="hover:text-primary transition-colors" href="#syllabus">Curriculum</a>
+                    <a class="hover:text-primary transition-colors" href="#support">Support</a>
+                    <a class="hover:text-primary transition-colors" href="#">Success Stories</a>
+                </nav>
+                <button
+                    class="bg-primary text-black px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-sm">headset_mic</span>
+                    Contact Support
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center px-4 md:px-20 py-12 overflow-hidden">
+        <div class="absolute inset-0 cyber-grid opacity-20 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Side -->
+            <div class="space-y-8 z-10">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    🎓 Learn in Malayalam • 100% Free
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight">
+                    Master <span class="text-primary italic">Cyber Security</span> for <span
+                        class="bg-primary text-black px-4 rotate-2 inline-block">FREE</span>
+                </h1>
+                <p class="text-lg text-white/70 max-w-xl leading-relaxed">
+                    Learn cybersecurity from scratch with 40+ Malayalam video tutorials. Get instant access to premium
+                    content and 24/7 tech support absolutely free.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <div class="flex items-center gap-2 text-sm text-white/50">
+                        <span class="material-symbols-outlined text-primary">language</span> Malayalam Videos
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-white/50">
+                        <span class="material-symbols-outlined text-primary">support_agent</span> 24/7 Tech Support
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-white/50">
+                        <span class="material-symbols-outlined text-primary">schedule</span> Lifetime Access
+                    </div>
+                </div>
+            </div>
+            <!-- Right Side: Signup Form -->
+            <div class="relative z-10">
+                <div
+                    class="bg-white/5 backdrop-blur-xl p-8 rounded-xl border border-white/10 shadow-2xl relative group">
+                    <!-- FREE Badge -->
+                    <div
+                        class="absolute -top-3 -right-3 bg-primary text-black px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider rotate-12 shadow-lg z-10">
+                        100% FREE
+                    </div>
+                    <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 blur-[100px] rounded-full"></div>
+                    <div class="relative space-y-6">
+                        <h3 class="text-2xl font-bold">Get Free Access Now 🎯</h3>
+                        <p class="text-white/60 text-sm">Unlock 40+ Malayalam videos + 24/7 tech support.</p>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Full
+                                    Name</label>
+                                <input
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
+                                    placeholder="e.g. Rahul Sharma" type="text" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Email
+                                    Address</label>
+                                <input
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
+                                    placeholder="rahul@example.com" type="email" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">WhatsApp
+                                    Number</label>
+                                <div class="flex gap-2">
+                                    <div
+                                        class="flex items-center justify-center bg-white/5 border border-white/10 rounded-xl px-3 text-sm text-white/40">
+                                        +91</div>
+                                    <input
+                                        class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
+                                        placeholder="98765 43210" type="tel" />
+                                </div>
+                            </div>
+                            <button
+                                class="w-full bg-primary text-black font-black py-5 rounded-xl text-lg hover:shadow-[0_0_30px_rgba(188,249,6,0.3)] transition-all flex items-center justify-center gap-2 group/btn">
+                                START LEARNING FREE
+                                <span
+                                    class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">bolt</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Support Banner (Localized) -->
+    <div class="bg-primary text-black py-4 overflow-hidden whitespace-nowrap border-y-2 border-black/10" id="support">
+        <div class="animate-marquee inline-block font-black text-sm uppercase tracking-widest">
+            🎓 MALAYALAM VIDEO TUTORIALS • 24/7 TECH SUPPORT IN YOUR LANGUAGE • 100% FREE FOREVER • NO HIDDEN COSTS •
+            🎓 MALAYALAM VIDEO TUTORIALS • 24/7 TECH SUPPORT IN YOUR LANGUAGE • 100% FREE FOREVER • NO HIDDEN COSTS •
+        </div>
+    </div>
+    <!-- Highlights Section: Reels Style -->
+    <section class="px-4 md:px-20 py-20 max-w-7xl mx-auto">
+        <div class="flex items-end justify-between mb-12 border-l-4 border-primary pl-6">
+            <div>
+                <h2 class="text-3xl font-black uppercase tracking-tight">Learn in <span class="text-primary italic">60
+                        Seconds</span></h2>
+                <p class="text-white/50 mt-2">Quick tutorial snippets to get you started.</p>
+            </div>
+            <div class="hidden md:flex gap-2">
+                <button
+                    class="size-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button
+                    class="size-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors text-primary border-primary/50">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+        </div>
+        <div class="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar">
+            <!-- Reel 1 -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group cursor-pointer">
+                <div
+                    class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
+                    <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                        data-alt="Technical code on a monitor with neon green lighting"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxqwiFcy7Gwl0tXeGn18bdVSFnU98QHgav1fIcbbqta843wzT3GaQGVqJa8uVMYJ6dr2-XvmmJrHBSGz5Sp-kYaENz9SEmkXRiFm6jGL74r0orwWrP2p-dllI9cvYwDBdHXHk6E-jY8_aYWsykB6Bn9EFScZEq-yblKMrCLcR6SwypQQHYqD_F66S8Hdo9CyetIaTRTfre8ZXcKkxS7GvGBynjdumrJhwyhGHWF61sKotHIOFzWheaDiXYIj5tYMhUnD1bkwJ0WQk')">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-primary text-6xl">play_circle</span>
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span
+                            class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Beginner</span>
+                        <h4 class="text-lg font-bold leading-tight">Hack a WiFi in 60s (Legally)</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Reel 2 -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group cursor-pointer">
+                <div
+                    class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
+                    <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                        data-alt="Digital server room with blue and green matrix lighting"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVCraSFwNCTL4Fvf5IUuHiVOdAfZ_rb-gjN4C8atVjj0XVF_6aVrKFaAYB_M0An6C6NA4zkE4xY5ez4bKyi3pocSHn2ZyHa27o8GcLVNhHIl7ApzbBsSadY-Mc4pV2Yp8M-1R0YjB56UjE2htHbYf9k_NZILvnRN6zlTC59VoGijvcaRjRD7oLr3Eglurd8MWjmkw_SdhZ1V8qNDCASSq6mDQGLI5fG_fhKQQgioWb12LpinEequOadamZgUCcqd_JhfmDdTeJ4tc')">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-primary text-6xl">play_circle</span>
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span
+                            class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Intermediate</span>
+                        <h4 class="text-lg font-bold leading-tight">SQL Injection Explained</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Reel 3 -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group cursor-pointer">
+                <div
+                    class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
+                    <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                        data-alt="Close up of person typing on a laptop in the dark"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClFARBJjwRpzOASKIQjA_GGYVSXwkEWJWF7WF8j7wlNSIEcv8hyyAyw-0tCWSlcDKTBRqKh17NpFPnrgW3sVFpoTqA3SbY7u0LetS04dtEjFmPrs8iCXIhAkQlvjAlMK7oZDJDYVgos8hBkcFasPgG_DptsB2mUBiy-VVCQcbxAxPGFNwXbKyPhZvfmPzCv0cRugvcn90eK38srHmoQXZnR4hf9woxEz1juvUusBFkXRV-gdCs96mCPm_VL5kZhfj019xBmJjy5FE')">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-primary text-6xl">play_circle</span>
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span
+                            class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Advanced</span>
+                        <h4 class="text-lg font-bold leading-tight">Bypass Phishing Filters</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Reel 4 -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group cursor-pointer">
+                <div
+                    class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
+                    <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                        data-alt="Digital skull on a monitor with binary background"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGwquo4BCn4p7ftWf4ZGJJtW9IT1nka7Nsu4O8iyhU7h2i-rwwYtXHfvK45qy5ZBIgtn1eoN-FHwp3aD0dAVtaIHf1-qIL762IivAvGUIdn9_Z-4zzWEiQS5eg2qhwhFk3tBnSyO6QaCb9HaqbAtG1Iv9GfmQPijEqbDUIKLjGNFrQn7_Pmg2j-NRKkehvpiYT493m0zoYavHFAIgynR5yIxMVezf6tHnghjyQzXTRCUZI2fNOKwxBfS-LMeUxhFAeoFp-W4th_60')">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-primary text-6xl">play_circle</span>
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span
+                            class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Free</span>
+                        <h4 class="text-lg font-bold leading-tight">Metasploit Fundamentals</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Syllabus Section -->
+    <section class="px-4 md:px-20 py-20 max-w-4xl mx-auto" id="syllabus">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black mb-4">Complete <span class="text-primary italic">Syllabus</span></h2>
+            <p class="text-white/50">40+ In-depth Malayalam video modules. Zero to Hero roadmap.</p>
+        </div>
+        <div class="mb-8 relative">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/30">search</span>
+            <input
+                class="w-full bg-white/5 border border-white/10 rounded-full px-12 py-5 outline-none focus:border-primary/50 transition-colors"
+                placeholder="Search modules (e.g. Nmap, Kali, Social Engineering)..." type="text" />
+        </div>
+        <div class="space-y-4">
+            <!-- Module 1 -->
+            <div
+                class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="p-6 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-30 italic">01</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Introduction to Ethical Hacking</h4>
+                            <p class="text-sm text-white/40">5 Videos • 45 Minutes</p>
+                        </div>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+            </div>
+            <!-- Module 2 -->
+            <div
+                class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="p-6 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-30 italic">02</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Network Sniffing &amp; Spoofing</h4>
+                            <p class="text-sm text-white/40">8 Videos • 1.5 Hours</p>
+                        </div>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+            </div>
+            <!-- Module 3 -->
+            <div
+                class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group border-primary/50 bg-primary/5">
+                <div class="p-6 flex items-center justify-between cursor-pointer border-b border-white/5">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-100 italic">03</span>
+                        <div>
+                            <h4 class="font-bold text-lg text-primary">Web Application Penetration Testing</h4>
+                            <p class="text-sm text-white/40">12 Videos • 3 Hours</p>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined text-primary">expand_less</span>
+                </div>
+                <div class="p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> OWASP Top 10
+                        Risks
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Cross-Site
+                        Scripting (XSS)
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> SQL Injection
+                        Hands-on
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Broken
+                        Authentication Lab
+                    </div>
+                </div>
+            </div>
+            <!-- Module 4 -->
+            <div
+                class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="p-6 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-30 italic">04</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Cryptographic Protocols &amp; Hashing</h4>
+                            <p class="text-sm text-white/40">6 Videos • 1 Hour</p>
+                        </div>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+            </div>
+            <!-- Ticker for more -->
+            <div class="py-10 text-center">
+                <button
+                    class="text-white/40 hover:text-primary font-bold text-sm tracking-widest uppercase transition-colors">
+                    + Show 36 more modules
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Final CTA Section -->
+    <section class="px-4 md:px-20 py-24">
+        <div
+            class="max-w-5xl mx-auto bg-gradient-to-br from-primary/20 to-cyber-accent/10 border border-primary/20 rounded-3xl p-12 text-center relative overflow-hidden">
+            <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/20 blur-[120px] rounded-full"></div>
+            <div class="relative z-10 space-y-8">
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter">Start Your <span
+                        class="text-primary italic">Free Learning</span> Journey Today</h2>
+                <p class="text-xl text-white/70 max-w-2xl mx-auto">Join thousands learning cybersecurity in Malayalam.
+                    Get instant access to 40+ videos + 24/7 tech support. 100% free, forever.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <button
+                        class="bg-primary text-black font-black px-10 py-5 rounded-xl text-xl hover:scale-105 transition-transform flex items-center justify-center gap-3">
+                        ENROLL FREE NOW
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    <button
+                        class="bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold px-10 py-5 rounded-xl text-xl hover:bg-white/10 transition-colors">
+                        Watch Sample Video
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12 px-4 md:px-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3 grayscale opacity-50">
+                <img src="Assets/images/Brototype-without-tagline-white-LOGO-SVG.svg" alt="Brototype Logo"
+                    class="h-6 md:h-8">
+            </div>
+            <div class="text-white/40 text-sm">
+                © 2026 Brototype. All Rights Reserved.
+            </div>
+            <div class="flex gap-6">
+                <a class="text-white/40 hover:text-primary transition-colors" href="#"><span
+                        class="material-symbols-outlined">social_leaderboard</span></a>
+                <a class="text-white/40 hover:text-primary transition-colors" href="#"><span
+                        class="material-symbols-outlined">link</span></a>
+                <a class="text-white/40 hover:text-primary transition-colors" href="#"><span
+                        class="material-symbols-outlined">youtube_activity</span></a>
+            </div>
+        </div>
+    </footer>
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body>
+
+</html>
