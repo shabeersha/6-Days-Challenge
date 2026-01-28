@@ -1462,7 +1462,7 @@
             initialCountry: "in",
             preferredCountries: ["in", "us", "gb", "ae", "sa"],
             separateDialCode: true,
-            dropdownContainer: document.body,
+            useFullscreenPopup: false,
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.12/build/js/utils.js"
         });
 
@@ -1512,16 +1512,22 @@
             
             /* Mobile responsive fixes for country dropdown */
             @media (max-width: 640px) {
+                /* Make dropdown appear below input field, not fullscreen */
                 .iti__country-list {
-                    width: calc(100vw - 40px) !important;
-                    max-width: calc(100vw - 40px) !important;
-                    left: 50% !important;
-                    transform: translateX(-50%) !important;
-                    margin-left: 0 !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    position: absolute !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                    top: 100% !important;
+                    transform: none !important;
+                    margin-top: 4px !important;
+                    z-index: 1000 !important;
                 }
-                .iti__dropdown-content {
-                    width: calc(100vw - 40px) !important;
-                    max-width: calc(100vw - 40px) !important;
+                
+                /* Ensure dropdown container is positioned relative */
+                .iti {
+                    position: relative !important;
                 }
             }
             
