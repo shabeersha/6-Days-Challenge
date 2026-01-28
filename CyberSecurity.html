@@ -6,6 +6,42 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Brototype | Master Cyber Security for FREE</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Learn cybersecurity from scratch with 40+ Malayalam video tutorials. Get instant access to premium content and 24/7 tech support absolutely free. Start your ethical hacking journey today!" />
+    <meta name="keywords"
+        content="cybersecurity course, ethical hacking, Malayalam tutorials, free cybersecurity, Kali Linux, penetration testing, OWASP, network security, Brototype" />
+    <meta name="author" content="Brototype" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.brototype.com/cybersecurity" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.brototype.com/cybersecurity" />
+    <meta property="og:title" content="Master Cyber Security for FREE | Brototype" />
+    <meta property="og:description"
+        content="Learn cybersecurity from scratch with 40+ Malayalam video tutorials. Get instant access to premium content and 24/7 tech support absolutely free." />
+    <meta property="og:image" content="https://www.brototype.com/images/cybersecurity-og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Brototype" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.brototype.com/cybersecurity" />
+    <meta name="twitter:title" content="Master Cyber Security for FREE | Brototype" />
+    <meta name="twitter:description"
+        content="Learn cybersecurity from scratch with 40+ Malayalam video tutorials. Get instant access to premium content and 24/7 tech support absolutely free." />
+    <meta name="twitter:image" content="https://www.brototype.com/images/cybersecurity-twitter-card.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0a0a0a" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet" />
@@ -46,6 +82,46 @@
             background-size: 20px 20px;
         }
     </style>
+    <!-- intl-tel-input CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.12/build/css/intlTelInput.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Master Cyber Security for FREE",
+        "description": "Learn cybersecurity from scratch with 40+ Malayalam video tutorials. Get instant access to premium content and 24/7 tech support absolutely free.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Brototype",
+            "sameAs": "https://www.brototype.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.brototype.com/cybersecurity"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "courseWorkload": "PT24H",
+            "inLanguage": "ml"
+        },
+        "educationalLevel": "Beginner to Advanced",
+        "numberOfCredits": "40+",
+        "teaches": [
+            "Ethical Hacking",
+            "Penetration Testing",
+            "Network Security",
+            "OWASP Top 10",
+            "Kali Linux",
+            "Web Application Security"
+        ]
+    }
+    </script>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-white selection:bg-primary selection:text-black">
@@ -54,14 +130,12 @@
         class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="images/Brototype-without-tagline-white-LOGO-SVG.svg" alt="Brototype Logo"
-                    class="h-8 md:h-10">
+                <img src="images/Brototype-without-tagline-white-LOGO-SVG.svg" alt="Brototype Logo" class="h-8 md:h-10">
             </div>
             <div class="hidden md:flex items-center gap-8">
                 <nav class="flex gap-6 text-sm font-medium">
                     <a class="hover:text-primary transition-colors" href="#syllabus">Curriculum</a>
                     <a class="hover:text-primary transition-colors" href="#support">Support</a>
-                    <a class="hover:text-primary transition-colors" href="#">Success Stories</a>
                 </nav>
                 <button
                     class="bg-primary text-black px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 hover:scale-105 transition-transform">
@@ -74,6 +148,7 @@
     <!-- Hero Section -->
     <section class="relative min-h-[85vh] flex items-center px-4 md:px-20 py-12 overflow-hidden">
         <div class="absolute inset-0 cyber-grid opacity-20 pointer-events-none"></div>
+        <div id="comets-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <!-- Left Side -->
             <div class="space-y-8 z-10">
@@ -117,34 +192,42 @@
                     </div>
                     <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 blur-[100px] rounded-full"></div>
                     <div class="relative space-y-6">
-                        <h3 class="text-2xl font-bold">Get Free Access Now 🎯</h3>
+                        <h3 class="text-2xl font-bold">Get Free Access Now</h3>
                         <p class="text-white/60 text-sm">Unlock 40+ Malayalam videos + 24/7 tech support.</p>
                         <form class="space-y-4">
                             <div>
                                 <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Full
                                     Name</label>
-                                <input
+                                <input name="name" required
                                     class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
                                     placeholder="e.g. Rahul Sharma" type="text" />
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Email
                                     Address</label>
-                                <input
+                                <input name="email" required
                                     class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
                                     placeholder="rahul@example.com" type="email" />
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">WhatsApp
                                     Number</label>
-                                <div class="flex gap-2">
-                                    <div
-                                        class="flex items-center justify-center bg-white/5 border border-white/10 rounded-xl px-3 text-sm text-white/40">
-                                        +91</div>
-                                    <input
-                                        class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
-                                        placeholder="98765 43210" type="tel" />
-                                </div>
+                                <input id="phone" name="phone" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
+                                    placeholder="98765 43210" type="tel" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Current
+                                    Status</label>
+                                <select name="status" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-white/70">
+                                    <option value="" class="bg-background-dark" disabled selected>Select your current
+                                        status</option>
+                                    <option value="student" class="bg-background-dark">Student</option>
+                                    <option value="working" class="bg-background-dark">Working Professional</option>
+                                    <option value="jobseeker" class="bg-background-dark">Job Seeker</option>
+                                    <option value="other" class="bg-background-dark">Other</option>
+                                </select>
                             </div>
                             <button
                                 class="w-full bg-primary text-black font-black py-5 rounded-xl text-lg hover:shadow-[0_0_30px_rgba(188,249,6,0.3)] transition-all flex items-center justify-center gap-2 group/btn">
@@ -152,6 +235,11 @@
                                 <span
                                     class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">bolt</span>
                             </button>
+                            <p class="text-xs text-white/40 text-center mt-3">
+                                By clicking, you agree to our <a href="https://www.brototype.com/privacypolicy/"
+                                    class="text-primary hover:underline">privacy
+                                    policy</a>.
+                            </p>
                         </form>
                     </div>
                 </div>
@@ -184,84 +272,143 @@
                 </button>
             </div>
         </div>
-        <div class="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar">
-            <!-- Reel 1 -->
-            <div class="min-w-[280px] md:min-w-[320px] snap-start group cursor-pointer">
+        <div class="flex gap-6 overflow-x-auto pb-8 no-scrollbar" id="reels-container">
+            <!-- Reel 1: Ethical Hacker -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group reel-card"
+                data-video="Videos/Ethical Hacker.mp4">
                 <div
                     class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
-                    <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                        data-alt="Technical code on a monitor with neon green lighting"
-                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxqwiFcy7Gwl0tXeGn18bdVSFnU98QHgav1fIcbbqta843wzT3GaQGVqJa8uVMYJ6dr2-XvmmJrHBSGz5Sp-kYaENz9SEmkXRiFm6jGL74r0orwWrP2p-dllI9cvYwDBdHXHk6E-jY8_aYWsykB6Bn9EFScZEq-yblKMrCLcR6SwypQQHYqD_F66S8Hdo9CyetIaTRTfre8ZXcKkxS7GvGBynjdumrJhwyhGHWF61sKotHIOFzWheaDiXYIj5tYMhUnD1bkwJ0WQk')">
-                    </div>
+                    <video class="absolute inset-0 w-full h-full object-cover" muted loop playsinline>
+                        <source src="Videos/Ethical Hacker.mp4" type="video/mp4">
+                    </video>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span class="material-symbols-outlined text-primary text-6xl">play_circle</span>
+                    <!-- Play/Pause Button -->
+                    <div class="absolute inset-0 flex items-center justify-center play-overlay cursor-pointer">
+                        <span class="material-symbols-outlined text-primary text-6xl drop-shadow-lg">play_circle</span>
                     </div>
+                    <!-- Mute/Unmute Button -->
+                    <button
+                        class="mute-btn absolute top-4 right-4 bg-black/50 backdrop-blur-sm p-2 rounded-full hover:bg-black/70 transition-colors z-10">
+                        <span class="material-symbols-outlined text-white text-xl">volume_off</span>
+                    </button>
                     <div class="absolute bottom-6 left-6 right-6">
                         <span
                             class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Beginner</span>
-                        <h4 class="text-lg font-bold leading-tight">Hack a WiFi in 60s (Legally)</h4>
+                        <h4 class="text-lg font-bold leading-tight">Ethical Hacker</h4>
                     </div>
                 </div>
             </div>
-            <!-- Reel 2 -->
-            <div class="min-w-[280px] md:min-w-[320px] snap-start group cursor-pointer">
+            <!-- Reel 2: Incognito Mode Exposed -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group reel-card"
+                data-video="Videos/Incognito Mode Exposed.mp4">
                 <div
                     class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
-                    <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                        data-alt="Digital server room with blue and green matrix lighting"
-                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVCraSFwNCTL4Fvf5IUuHiVOdAfZ_rb-gjN4C8atVjj0XVF_6aVrKFaAYB_M0An6C6NA4zkE4xY5ez4bKyi3pocSHn2ZyHa27o8GcLVNhHIl7ApzbBsSadY-Mc4pV2Yp8M-1R0YjB56UjE2htHbYf9k_NZILvnRN6zlTC59VoGijvcaRjRD7oLr3Eglurd8MWjmkw_SdhZ1V8qNDCASSq6mDQGLI5fG_fhKQQgioWb12LpinEequOadamZgUCcqd_JhfmDdTeJ4tc')">
-                    </div>
+                    <video class="absolute inset-0 w-full h-full object-cover" muted loop playsinline>
+                        <source src="Videos/Incognito Mode Exposed.mp4" type="video/mp4">
+                    </video>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span class="material-symbols-outlined text-primary text-6xl">play_circle</span>
+                    <div class="absolute inset-0 flex items-center justify-center play-overlay cursor-pointer">
+                        <span class="material-symbols-outlined text-primary text-6xl drop-shadow-lg">play_circle</span>
                     </div>
+                    <button
+                        class="mute-btn absolute top-4 right-4 bg-black/50 backdrop-blur-sm p-2 rounded-full hover:bg-black/70 transition-colors z-10">
+                        <span class="material-symbols-outlined text-white text-xl">volume_off</span>
+                    </button>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span
+                            class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Beginner</span>
+                        <h4 class="text-lg font-bold leading-tight">Incognito Mode Exposed</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Reel 3: Intro to CyberSecurity Tutorial -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group reel-card"
+                data-video="Videos/Into to CyberSecurity Tutorial.mp4">
+                <div
+                    class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
+                    <video class="absolute inset-0 w-full h-full object-cover" muted loop playsinline>
+                        <source src="Videos/Into to CyberSecurity Tutorial.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute inset-0 flex items-center justify-center play-overlay cursor-pointer">
+                        <span class="material-symbols-outlined text-primary text-6xl drop-shadow-lg">play_circle</span>
+                    </div>
+                    <button
+                        class="mute-btn absolute top-4 right-4 bg-black/50 backdrop-blur-sm p-2 rounded-full hover:bg-black/70 transition-colors z-10">
+                        <span class="material-symbols-outlined text-white text-xl">volume_off</span>
+                    </button>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span
+                            class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Beginner</span>
+                        <h4 class="text-lg font-bold leading-tight">Intro to CyberSecurity</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Reel 4: Ports Explained -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group reel-card"
+                data-video="Videos/PortsExplained.mp4">
+                <div
+                    class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
+                    <video class="absolute inset-0 w-full h-full object-cover" muted loop playsinline>
+                        <source src="Videos/PortsExplained.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute inset-0 flex items-center justify-center play-overlay cursor-pointer">
+                        <span class="material-symbols-outlined text-primary text-6xl drop-shadow-lg">play_circle</span>
+                    </div>
+                    <button
+                        class="mute-btn absolute top-4 right-4 bg-black/50 backdrop-blur-sm p-2 rounded-full hover:bg-black/70 transition-colors z-10">
+                        <span class="material-symbols-outlined text-white text-xl">volume_off</span>
+                    </button>
                     <div class="absolute bottom-6 left-6 right-6">
                         <span
                             class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Intermediate</span>
-                        <h4 class="text-lg font-bold leading-tight">SQL Injection Explained</h4>
+                        <h4 class="text-lg font-bold leading-tight">Ports Explained</h4>
                     </div>
                 </div>
             </div>
-            <!-- Reel 3 -->
-            <div class="min-w-[280px] md:min-w-[320px] snap-start group cursor-pointer">
+            <!-- Reel 5: TCP and UDP -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group reel-card" data-video="Videos/TCP and UDP.mp4">
                 <div
                     class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
-                    <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                        data-alt="Close up of person typing on a laptop in the dark"
-                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClFARBJjwRpzOASKIQjA_GGYVSXwkEWJWF7WF8j7wlNSIEcv8hyyAyw-0tCWSlcDKTBRqKh17NpFPnrgW3sVFpoTqA3SbY7u0LetS04dtEjFmPrs8iCXIhAkQlvjAlMK7oZDJDYVgos8hBkcFasPgG_DptsB2mUBiy-VVCQcbxAxPGFNwXbKyPhZvfmPzCv0cRugvcn90eK38srHmoQXZnR4hf9woxEz1juvUusBFkXRV-gdCs96mCPm_VL5kZhfj019xBmJjy5FE')">
-                    </div>
+                    <video class="absolute inset-0 w-full h-full object-cover" muted loop playsinline>
+                        <source src="Videos/TCP and UDP.mp4" type="video/mp4">
+                    </video>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span class="material-symbols-outlined text-primary text-6xl">play_circle</span>
+                    <div class="absolute inset-0 flex items-center justify-center play-overlay cursor-pointer">
+                        <span class="material-symbols-outlined text-primary text-6xl drop-shadow-lg">play_circle</span>
                     </div>
+                    <button
+                        class="mute-btn absolute top-4 right-4 bg-black/50 backdrop-blur-sm p-2 rounded-full hover:bg-black/70 transition-colors z-10">
+                        <span class="material-symbols-outlined text-white text-xl">volume_off</span>
+                    </button>
                     <div class="absolute bottom-6 left-6 right-6">
                         <span
                             class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Advanced</span>
-                        <h4 class="text-lg font-bold leading-tight">Bypass Phishing Filters</h4>
+                        <h4 class="text-lg font-bold leading-tight">TCP and UDP</h4>
                     </div>
                 </div>
             </div>
-            <!-- Reel 4 -->
-            <div class="min-w-[280px] md:min-w-[320px] snap-start group cursor-pointer">
+            <!-- Reel 6: TCP and UDP Tutorial Highlights -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-start group reel-card"
+                data-video="Videos/TCPandUDP_Tutorial_Highlights.mp4">
                 <div
                     class="relative aspect-[9/16] rounded-xl overflow-hidden border-2 border-white/5 group-hover:border-primary/50 transition-colors">
-                    <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                        data-alt="Digital skull on a monitor with binary background"
-                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGwquo4BCn4p7ftWf4ZGJJtW9IT1nka7Nsu4O8iyhU7h2i-rwwYtXHfvK45qy5ZBIgtn1eoN-FHwp3aD0dAVtaIHf1-qIL762IivAvGUIdn9_Z-4zzWEiQS5eg2qhwhFk3tBnSyO6QaCb9HaqbAtG1Iv9GfmQPijEqbDUIKLjGNFrQn7_Pmg2j-NRKkehvpiYT493m0zoYavHFAIgynR5yIxMVezf6tHnghjyQzXTRCUZI2fNOKwxBfS-LMeUxhFAeoFp-W4th_60')">
-                    </div>
+                    <video class="absolute inset-0 w-full h-full object-cover" muted loop playsinline>
+                        <source src="Videos/TCPandUDP_Tutorial_Highlights.mp4" type="video/mp4">
+                    </video>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                    <div
-                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span class="material-symbols-outlined text-primary text-6xl">play_circle</span>
+                    <div class="absolute inset-0 flex items-center justify-center play-overlay cursor-pointer">
+                        <span class="material-symbols-outlined text-primary text-6xl drop-shadow-lg">play_circle</span>
                     </div>
+                    <button
+                        class="mute-btn absolute top-4 right-4 bg-black/50 backdrop-blur-sm p-2 rounded-full hover:bg-black/70 transition-colors z-10">
+                        <span class="material-symbols-outlined text-white text-xl">volume_off</span>
+                    </button>
                     <div class="absolute bottom-6 left-6 right-6">
                         <span
-                            class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Free</span>
-                        <h4 class="text-lg font-bold leading-tight">Metasploit Fundamentals</h4>
+                            class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2 inline-block">Tutorial</span>
+                        <h4 class="text-lg font-bold leading-tight">TCP/UDP Tutorial Highlights</h4>
                     </div>
                 </div>
             </div>
@@ -275,91 +422,438 @@
         </div>
         <div class="mb-8 relative">
             <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/30">search</span>
-            <input
+            <input id="module-search"
                 class="w-full bg-white/5 border border-white/10 rounded-full px-12 py-5 outline-none focus:border-primary/50 transition-colors"
                 placeholder="Search modules (e.g. Nmap, Kali, Social Engineering)..." type="text" />
         </div>
-        <div class="space-y-4">
+        <div class="space-y-4" id="modules-container">
             <!-- Module 1 -->
-            <div
-                class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
-                <div class="p-6 flex items-center justify-between cursor-pointer">
+            <div data-module="introduction internet web dark web browsers"
+                class="module-item bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
                     <div class="flex items-center gap-6">
                         <span class="text-primary font-black text-2xl opacity-30 italic">01</span>
                         <div>
-                            <h4 class="font-bold text-lg">Introduction to Ethical Hacking</h4>
-                            <p class="text-sm text-white/40">5 Videos • 45 Minutes</p>
+                            <h4 class="font-bold text-lg">Introduction to the Internet</h4>
+                            <p class="text-sm text-white/40">1 Video • 1 Hour 5 Minutes</p>
                         </div>
                     </div>
                     <span
-                        class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> What is the
+                        Internet?
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> How the Internet
+                        Works
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Internet
+                        Architecture
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Surface Web
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Deep Web
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Dark Web
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Working of Dark
+                        Web
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Internet
+                        Communication
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> The Role of ISPs
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> How Web Browsers
+                        Work
+                    </div>
                 </div>
             </div>
             <!-- Module 2 -->
-            <div
-                class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
-                <div class="p-6 flex items-center justify-between cursor-pointer">
+            <div data-module="introduction cybersecurity threats attacks protection"
+                class="module-item bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
                     <div class="flex items-center gap-6">
                         <span class="text-primary font-black text-2xl opacity-30 italic">02</span>
                         <div>
-                            <h4 class="font-bold text-lg">Network Sniffing &amp; Spoofing</h4>
-                            <p class="text-sm text-white/40">8 Videos • 1.5 Hours</p>
+                            <h4 class="font-bold text-lg">Introduction to Cybersecurity</h4>
+                            <p class="text-sm text-white/40">1 Video • 24 Minutes</p>
                         </div>
                     </div>
                     <span
-                        class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> What is
+                        Cybersecurity and Why is it so important?
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Importance of
+                        Cybersecurity
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Cyber Threats
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Case Study of
+                        Major Cyber-Attacks in India
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> The Role of
+                        Cybersecurity in Protecting Individuals, Organisations, and Nations
+                    </div>
                 </div>
             </div>
             <!-- Module 3 -->
-            <div
-                class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group border-primary/50 bg-primary/5">
-                <div class="p-6 flex items-center justify-between cursor-pointer border-b border-white/5">
+            <div data-module="introduction linux kali commands file management permissions"
+                class="module-item bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
                     <div class="flex items-center gap-6">
-                        <span class="text-primary font-black text-2xl opacity-100 italic">03</span>
+                        <span class="text-primary font-black text-2xl opacity-30 italic">03</span>
                         <div>
-                            <h4 class="font-bold text-lg text-primary">Web Application Penetration Testing</h4>
-                            <p class="text-sm text-white/40">12 Videos • 3 Hours</p>
+                            <h4 class="font-bold text-lg">Introduction to Linux</h4>
+                            <p class="text-sm text-white/40">3 Videos • 2 Hours 41 Minutes</p>
                         </div>
                     </div>
-                    <span class="material-symbols-outlined text-primary">expand_less</span>
+                    <span
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
                 </div>
-                <div class="p-6 bg-black/40 space-y-3">
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
                     <div class="flex items-center gap-3 text-sm text-white/70">
-                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> OWASP Top 10
-                        Risks
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> What is Linux?
                     </div>
                     <div class="flex items-center gap-3 text-sm text-white/70">
-                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Cross-Site
-                        Scripting (XSS)
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Basic Linux
+                        Commands and Navigation
                     </div>
                     <div class="flex items-center gap-3 text-sm text-white/70">
-                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> SQL Injection
-                        Hands-on
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Setting up Kali Linux
                     </div>
                     <div class="flex items-center gap-3 text-sm text-white/70">
-                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Broken
-                        Authentication Lab
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Understanding
+                        the Linux FHS
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Managing Files
+                        and Directories
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Managing File Permissions and Ownership
                     </div>
                 </div>
             </div>
             <!-- Module 4 -->
-            <div
-                class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
-                <div class="p-6 flex items-center justify-between cursor-pointer">
+            <div data-module="ethical hacking pentester reconnaissance recon nmap nessus vulnerability scanning"
+                class="module-item bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
                     <div class="flex items-center gap-6">
                         <span class="text-primary font-black text-2xl opacity-30 italic">04</span>
                         <div>
-                            <h4 class="font-bold text-lg">Cryptographic Protocols &amp; Hashing</h4>
-                            <p class="text-sm text-white/40">6 Videos • 1 Hour</p>
+                            <h4 class="font-bold text-lg">Introduction to Ethical Hacking</h4>
+                            <p class="text-sm text-white/40">13 Videos • 10 Hours 14 Minutes</p>
                         </div>
                     </div>
                     <span
-                        class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Concept of
+                        Ethical Hacking
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Pentester vs
+                        Hacker
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Concept of
+                        Reconnaissance
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Importance of
+                        Recon
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Types of Recon
+                        (Active & Passive)
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Passive Reconnaissance using WHOIS and Google Dorking
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Understanding
+                        Network Scanning
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> TCP/IP &
+                        Understanding Data Packets
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Types of Scans
+                        (Port Scanning, Network Mapping)
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Conducting Port Scans with Nmap
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> DNS - In Detail
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Recon Tools &
+                        Methodology
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Identifying
+                        Vulnerabilities in Networks and Systems
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Tools for
+                        Vulnerability Assessment (Nessus)
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Performing a Vulnerability Scan using Nessus
+                    </div>
                 </div>
             </div>
+
+            <!-- Hidden Modules (Initially Hidden) -->
+            <div data-module="exploitation phase exploits post-exploitation privilege escalation"
+                class="module-item hidden-module hidden bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-30 italic">05</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Exploitation Phase</h4>
+                            <p class="text-sm text-white/40">3 Videos • 1 Hour 54 Minutes</p>
+                        </div>
+                    </div>
+                    <span
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Introduction to
+                        Exploitation
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> What is
+                        Exploitation in Ethical Hacking?
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Types of
+                        Exploits
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Exploiting a Vulnerable Service on a Target System
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span>
+                        Post-Exploitation Techniques
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Maintaining
+                        Access and Covering Tracks
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Privilege
+                        Escalation Techniques
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Post-Exploitation
+                    </div>
+                </div>
+            </div>
+
+            <div data-module="report writing vapt reporting documentation"
+                class="module-item hidden-module hidden bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-30 italic">06</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Introduction to Report Writing</h4>
+                            <p class="text-sm text-white/40">1 Video • 45 Minutes</p>
+                        </div>
+                    </div>
+                    <span
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Importance of
+                        Reporting in Ethical Hacking
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Components of a
+                        Good Report
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Reviewing a Sample VAPT Report
+                    </div>
+                </div>
+            </div>
+
+            <div data-module="web application security attacks testing"
+                class="module-item hidden-module hidden bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-30 italic">07</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Attacking Web Applications</h4>
+                            <p class="text-sm text-white/40">2 Videos • 1 Hour 14 Minutes</p>
+                        </div>
+                    </div>
+                    <span
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Introduction to
+                        Web Application Security
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Understanding
+                        How Web Applications Work
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Common Security
+                        Issues in Web Applications
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: Setting
+                        up a Vulnerable Web Application for Testing
+                    </div>
+                </div>
+            </div>
+
+            <div data-module="owasp top 10 vulnerabilities web security injection"
+                class="module-item hidden-module hidden bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-30 italic">08</span>
+                        <div>
+                            <h4 class="font-bold text-lg">OWASP Top 10 Vulnerabilities</h4>
+                            <p class="text-sm text-white/40">11 Videos • 6 Hours 2 Minutes</p>
+                        </div>
+                    </div>
+                    <span
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Overview of
+                        OWASP Top 10 Vulnerabilities
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Real-World
+                        Examples of Each Vulnerability
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Identifying OWASP Top 10 Vulnerabilities
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Gathering
+                        Information About Web Applications
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Tools for Web
+                        App Recon
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical:
+                        Performing Recon of a Web App
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #1 - Broken Access Control
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #2 - Cryptographic Failures
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #3 - Injection
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #4 - Insecure Design
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #5 - Security Misconfiguration
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #6 - Vulnerable and Outdated Components
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #7 - Identification and Authentication Failures
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #8 - Software and Data Integrity Failures
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #9 - Security Logging and Monitoring Failures
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: OWASP
+                        Top 10 #10 - Server-Side Request Forgery (SSRF)
+                    </div>
+                </div>
+            </div>
+
+            <div data-module="burp suite web security testing tools"
+                class="module-item hidden-module hidden bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+                <div class="module-header p-6 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary font-black text-2xl opacity-30 italic">09</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Burp 101</h4>
+                            <p class="text-sm text-white/40">1 Video • 37 Minutes</p>
+                        </div>
+                    </div>
+                    <span
+                        class="expand-icon material-symbols-outlined text-white/30 group-hover:text-primary transition-colors">expand_more</span>
+                </div>
+                <div class="module-content hidden p-6 bg-black/40 space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">play_circle</span> Various
+                        Functions of Burp Suite
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-sm text-primary">terminal</span> Practical: Using
+                        Burp Suite to Identify Vulnerabilities
+                    </div>
+                </div>
+            </div>
+
             <!-- Ticker for more -->
             <div class="py-10 text-center">
-                <button
+                <button id="show-more-btn"
                     class="text-white/40 hover:text-primary font-bold text-sm tracking-widest uppercase transition-colors">
                     + Show 36 more modules
                 </button>
@@ -394,15 +888,14 @@
     <footer class="border-t border-white/10 py-12 px-4 md:px-20">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex items-center gap-3 grayscale opacity-50">
-                <img src="images/Brototype-without-tagline-white-LOGO-SVG.svg" alt="Brototype Logo"
-                    class="h-6 md:h-8">
+                <img src="images/Brototype-without-tagline-white-LOGO-SVG.svg" alt="Brototype Logo" class="h-6 md:h-8">
             </div>
             <div class="text-white/40 text-sm">
                 © 2026 Brototype. All Rights Reserved.
             </div>
-            <div class="flex gap-6">
-                <a class="text-white/40 hover:text-primary transition-colors" href="#"><span
-                        class="material-symbols-outlined">social_leaderboard</span></a>
+            <div class="flex gap-6 items-center">
+                <a class="text-white/40 hover:text-primary transition-colors text-sm"
+                    href="https://www.brototype.com/privacypolicy/">Privacy Policy</a>
                 <a class="text-white/40 hover:text-primary transition-colors" href="#"><span
                         class="material-symbols-outlined">link</span></a>
                 <a class="text-white/40 hover:text-primary transition-colors" href="#"><span
@@ -433,7 +926,1071 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Comet Styles */
+        .comet {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #bcf906;
+            border-radius: 50%;
+            box-shadow:
+                0 0 15px #bcf906,
+                0 0 30px #bcf906,
+                0 0 45px rgba(188, 249, 6, 0.8),
+                0 0 60px rgba(188, 249, 6, 0.5),
+                0 0 80px rgba(188, 249, 6, 0.3);
+            opacity: 0;
+        }
+
+        .comet::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #bcf906;
+            border-radius: 50%;
+            box-shadow:
+                0 0 50px #bcf906,
+                0 0 70px rgba(188, 249, 6, 0.8);
+            animation: sparkle 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        /* Horizontal comet trail */
+        .comet.horizontal::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to left, #bcf906, rgba(188, 249, 6, 0.6), transparent);
+            box-shadow:
+                0 0 15px rgba(188, 249, 6, 0.9),
+                0 0 25px rgba(188, 249, 6, 0.6);
+        }
+
+        /* Vertical comet trail */
+        .comet.vertical::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to top, #bcf906, rgba(188, 249, 6, 0.6), transparent);
+            box-shadow:
+                0 0 15px rgba(188, 249, 6, 0.9),
+                0 0 25px rgba(188, 249, 6, 0.6);
+        }
+
+        @keyframes comet-horizontal {
+            0% {
+                opacity: 0;
+                transform: translateX(0) scaleX(0.5);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(50vw) scaleX(2);
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(100vw) scaleX(3);
+            }
+        }
+
+        @keyframes comet-vertical {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scaleY(0.5);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(50vh) scaleY(2);
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) scaleY(3);
+            }
+        }
+
+        /* Early death animation */
+        @keyframes comet-horizontal-die {
+            0% {
+                opacity: 0;
+                transform: translateX(0) scaleX(0.5);
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+                transform: translateX(var(--die-distance)) scaleX(1.5);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(var(--die-distance)) scaleX(0.3);
+            }
+        }
+
+        @keyframes comet-vertical-die {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scaleY(0.5);
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+                transform: translateY(var(--die-distance)) scaleY(1.5);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(var(--die-distance)) scaleY(0.3);
+            }
+        }
+
+        .comet.horizontal {
+            animation: comet-horizontal linear forwards;
+        }
+
+        .comet.vertical {
+            animation: comet-vertical linear forwards;
+        }
+
+        .comet.horizontal.die {
+            animation: comet-horizontal-die linear forwards;
+        }
+
+        .comet.vertical.die {
+            animation: comet-vertical-die linear forwards;
+        }
+
+        /* Play overlay transition */
+        .play-overlay {
+            transition: opacity 0.3s ease;
+        }
     </style>
+
+    <script>
+        // Comet Animation System
+        function createComet() {
+            const cometsContainer = document.getElementById('comets-container');
+            if (!cometsContainer) return;
+
+            const comet = document.createElement('div');
+            comet.className = 'comet';
+
+            // Randomly choose horizontal or vertical direction
+            const isHorizontal = Math.random() > 0.5;
+
+            // 30% chance the comet will die mid-journey
+            const willDie = Math.random() < 0.3;
+
+            if (isHorizontal) {
+                comet.classList.add('horizontal');
+                // Align to grid (20px spacing from CSS)
+                const gridRow = Math.floor(Math.random() * (window.innerHeight / 20)) * 20;
+                comet.style.top = gridRow + 'px';
+                comet.style.left = '-80px'; // Start off-screen (accounting for trail)
+
+                if (willDie) {
+                    comet.classList.add('die');
+                    // Die somewhere between 30% and 70% of the journey
+                    const diePercent = 30 + Math.random() * 40;
+                    const dieDistance = (window.innerWidth * diePercent / 100);
+                    comet.style.setProperty('--die-distance', dieDistance + 'px');
+                }
+            } else {
+                comet.classList.add('vertical');
+                // Align to grid (20px spacing from CSS)
+                const gridCol = Math.floor(Math.random() * (window.innerWidth / 20)) * 20;
+                comet.style.left = gridCol + 'px';
+                comet.style.top = '-80px'; // Start off-screen (accounting for trail)
+
+                if (willDie) {
+                    comet.classList.add('die');
+                    // Die somewhere between 30% and 70% of the journey
+                    const diePercent = 30 + Math.random() * 40;
+                    const dieDistance = (window.innerHeight * diePercent / 100);
+                    comet.style.setProperty('--die-distance', dieDistance + 'px');
+                }
+            }
+
+            // Random duration between 2-5 seconds
+            const duration = 2 + Math.random() * 3;
+            comet.style.animationDuration = duration + 's';
+
+            cometsContainer.appendChild(comet);
+
+            // Remove comet after animation completes
+            setTimeout(() => {
+                comet.remove();
+            }, duration * 1000);
+        }
+
+        // Create comets at random intervals
+        function startCometSystem() {
+            // Create initial comet
+            createComet();
+
+            // Schedule next comet
+            const nextCometDelay = 800 + Math.random() * 2000; // Between 0.8-2.8 seconds
+            setTimeout(startCometSystem, nextCometDelay);
+        }
+
+        // Start the comet system when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startCometSystem);
+        } else {
+            startCometSystem();
+        }
+
+        // Video Reel Functionality with Auto-Scroll Carousel
+        document.addEventListener('DOMContentLoaded', function () {
+            const reelCards = document.querySelectorAll('.reel-card');
+            const reelsContainer = reelCards[0]?.parentElement;
+            let autoScrollInterval = null;
+            let isAnyVideoPlaying = false;
+
+            // Clone video cards for seamless infinite scroll
+            if (reelsContainer && reelCards.length > 0) {
+                // Clone all cards and append them to create seamless loop
+                reelCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('cloned-card');
+                    reelsContainer.appendChild(clone);
+                });
+
+                // Get all cards including clones
+                const allCards = reelsContainer.querySelectorAll('.reel-card');
+
+                // Setup event listeners for cloned cards too
+                allCards.forEach(card => {
+                    if (card.classList.contains('cloned-card')) {
+                        setupVideoCard(card);
+                    }
+                });
+            }
+
+            // Auto-scroll function with seamless loop
+            function startAutoScroll() {
+                if (!reelsContainer || isAnyVideoPlaying) return;
+
+                autoScrollInterval = setInterval(() => {
+                    if (isAnyVideoPlaying) {
+                        clearInterval(autoScrollInterval);
+                        return;
+                    }
+
+                    const scrollLeft = reelsContainer.scrollLeft;
+                    const scrollWidth = reelsContainer.scrollWidth;
+                    const originalWidth = scrollWidth / 2; // Half is original, half is cloned
+
+                    // Scroll forward
+                    reelsContainer.scrollLeft = scrollLeft + 1;
+
+                    // When we've scrolled to the cloned section, jump back seamlessly
+                    if (scrollLeft >= originalWidth) {
+                        reelsContainer.scrollLeft = 0;
+                    }
+                }, 30); // Update every 30ms for smooth scrolling
+            }
+
+            // Stop auto-scroll
+            function stopAutoScroll() {
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = null;
+                }
+            }
+
+            // Center a specific video card
+            function centerVideo(card) {
+                if (!reelsContainer) return;
+
+                const containerRect = reelsContainer.getBoundingClientRect();
+                const cardRect = card.getBoundingClientRect();
+                const scrollLeft = reelsContainer.scrollLeft;
+
+                // Calculate the position to center the card
+                const cardCenter = cardRect.left - containerRect.left + scrollLeft + (cardRect.width / 2);
+                const containerCenter = containerRect.width / 2;
+                const targetScroll = cardCenter - containerCenter;
+
+                reelsContainer.scrollTo({
+                    left: targetScroll,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Pause auto-scroll on hover
+            if (reelsContainer) {
+                reelsContainer.addEventListener('mouseenter', stopAutoScroll);
+                reelsContainer.addEventListener('mouseleave', () => {
+                    if (!isAnyVideoPlaying) {
+                        startAutoScroll();
+                    }
+                });
+            }
+
+            // Setup video card event listeners
+            function setupVideoCard(card) {
+                const video = card.querySelector('video');
+                const playOverlay = card.querySelector('.play-overlay');
+                const muteBtn = card.querySelector('.mute-btn');
+                const muteIcon = muteBtn ? muteBtn.querySelector('.material-symbols-outlined') : null;
+
+                if (video && playOverlay) {
+                    // Click on play overlay to play/pause
+                    playOverlay.addEventListener('click', function (e) {
+                        e.stopPropagation();
+
+                        if (video.paused) {
+                            // Pause all other videos (including clones)
+                            document.querySelectorAll('.reel-card video').forEach(v => {
+                                if (v !== video) {
+                                    v.pause();
+                                    v.currentTime = 0;
+                                    const otherCard = v.closest('.reel-card');
+                                    const otherOverlay = otherCard.querySelector('.play-overlay');
+                                    if (otherOverlay) {
+                                        otherOverlay.querySelector('.material-symbols-outlined').textContent = 'play_circle';
+                                        otherOverlay.style.opacity = '1';
+                                    }
+                                }
+                            });
+
+                            // Stop auto-scroll and center this video
+                            stopAutoScroll();
+                            isAnyVideoPlaying = true;
+                            centerVideo(card);
+
+                            video.play();
+                            playOverlay.querySelector('.material-symbols-outlined').textContent = 'pause_circle';
+                            playOverlay.style.opacity = '0';
+                        } else {
+                            video.pause();
+                            playOverlay.querySelector('.material-symbols-outlined').textContent = 'play_circle';
+                            playOverlay.style.opacity = '1';
+
+                            // Resume auto-scroll when all videos are paused
+                            isAnyVideoPlaying = false;
+                            startAutoScroll();
+                        }
+                    });
+
+                    // Show play button when video ends
+                    video.addEventListener('ended', function () {
+                        playOverlay.querySelector('.material-symbols-outlined').textContent = 'play_circle';
+                        playOverlay.style.opacity = '1';
+
+                        // Resume auto-scroll when video ends
+                        isAnyVideoPlaying = false;
+                        startAutoScroll();
+                    });
+
+                    // Show/hide overlay on hover when video is playing
+                    card.addEventListener('mouseenter', function () {
+                        if (!video.paused) {
+                            playOverlay.style.opacity = '1';
+                        }
+                    });
+
+                    card.addEventListener('mouseleave', function () {
+                        if (!video.paused) {
+                            playOverlay.style.opacity = '0';
+                        }
+                    });
+
+                    // Mute/Unmute button functionality
+                    if (muteBtn && muteIcon) {
+                        muteBtn.addEventListener('click', function (e) {
+                            e.stopPropagation();
+
+                            if (video.muted) {
+                                video.muted = false;
+                                muteIcon.textContent = 'volume_up';
+                            } else {
+                                video.muted = true;
+                                muteIcon.textContent = 'volume_off';
+                            }
+                        });
+                    }
+                }
+            }
+
+            // Setup original cards
+            reelCards.forEach(card => {
+                setupVideoCard(card);
+            });
+
+            // Start auto-scroll on page load
+            startAutoScroll();
+        });
+
+        // Syllabus Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Accordion Toggle
+            const moduleHeaders = document.querySelectorAll('.module-header');
+
+            moduleHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const moduleItem = this.parentElement;
+                    const content = moduleItem.querySelector('.module-content');
+                    const icon = this.querySelector('.expand-icon');
+
+                    // Toggle content visibility
+                    if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        icon.textContent = 'expand_less';
+                    } else {
+                        content.classList.add('hidden');
+                        icon.textContent = 'expand_more';
+                    }
+                });
+            });
+
+            // Search Functionality
+            const searchInput = document.getElementById('module-search');
+            const moduleItems = document.querySelectorAll('.module-item');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase().trim();
+
+                moduleItems.forEach(item => {
+                    const moduleText = item.getAttribute('data-module');
+                    const titleText = item.querySelector('h4').textContent.toLowerCase();
+                    const searchableText = moduleText + ' ' + titleText;
+
+                    if (searchableText.includes(searchTerm)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // Show More Modules Button
+            const showMoreBtn = document.getElementById('show-more-btn');
+            const hiddenModules = document.querySelectorAll('.hidden-module');
+            let modulesShown = false;
+
+            showMoreBtn.addEventListener('click', function () {
+                if (!modulesShown) {
+                    hiddenModules.forEach(module => {
+                        module.classList.remove('hidden');
+                    });
+                    this.textContent = '- Show Less';
+                    modulesShown = true;
+                } else {
+                    hiddenModules.forEach(module => {
+                        module.classList.add('hidden');
+                        // Close any open accordions in hidden modules
+                        const content = module.querySelector('.module-content');
+                        const icon = module.querySelector('.expand-icon');
+                        if (content && !content.classList.contains('hidden')) {
+                            content.classList.add('hidden');
+                            icon.textContent = 'expand_more';
+                        }
+                    });
+                    this.textContent = '+ Show 36 more modules';
+                    modulesShown = false;
+
+                    // Scroll to syllabus section
+                    document.getElementById('syllabus').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+    <!-- intl-tel-input JS -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.12/build/js/intlTelInput.min.js"></script>
+    <script>
+        // Initialize intl-tel-input
+        const phoneInput = document.querySelector("#phone");
+        const iti = window.intlTelInput(phoneInput, {
+            initialCountry: "in",
+            preferredCountries: ["in", "us", "gb", "ae", "sa"],
+            separateDialCode: true,
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.12/build/js/utils.js"
+        });
+
+        // Custom styling for intl-tel-input to match dark theme
+        const style = document.createElement('style');
+        style.textContent = `
+            .iti {
+                width: 100%;
+                display: block;
+            }
+            .iti * {
+                box-sizing: border-box;
+            }
+            
+            /* Input field - INCREASED padding to prevent overlap (but NOT search input) */
+            .iti--allow-dropdown input:not(.iti__search-input),
+            .iti--allow-dropdown input[type=tel]:not(.iti__search-input),
+            .iti input[type=tel]:not(.iti__search-input),
+            #phone {
+                padding-left: 110px !important;
+                border-radius: 0.75rem !important;
+                margin-left: 0 !important;
+            }
+            
+            /* Dropdown content container - Glass effect */
+            .iti__dropdown-content {
+                background-color: rgba(10, 10, 10, 0.95) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+                max-width: 300px !important;
+                width: 300px !important;
+            }
+            
+            /* Country dropdown list - Glass effect with better border */
+            .iti__country-list {
+                background-color: rgba(10, 10, 10, 0.95) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+                border: 1px solid rgba(188, 249, 6, 0.2) !important;
+                border-radius: 0.75rem !important;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(188, 249, 6, 0.1) !important;
+                max-height: 200px !important;
+                width: 300px !important;
+                z-index: 1000 !important;
+                margin-top: 4px !important;
+            }
+            
+            /* Individual country items - Reduced spacing */
+            .iti__country {
+                padding: 8px 12px !important;
+                color: rgba(255, 255, 255, 0.7) !important;
+                background-color: transparent !important;
+            }
+            .iti__country:hover {
+                background-color: rgba(188, 249, 6, 0.15) !important;
+                color: #bcf906 !important;
+            }
+            .iti__country.iti__highlight {
+                background-color: rgba(188, 249, 6, 0.2) !important;
+                color: #bcf906 !important;
+            }
+            .iti__country.iti__active {
+                background-color: rgba(188, 249, 6, 0.25) !important;
+                color: #bcf906 !important;
+            }
+            
+            /* Selected country button */
+            .iti__selected-country {
+                background-color: transparent !important;
+                border: none !important;
+                border-radius: 0 !important;
+                padding: 16px 8px 16px 16px !important;
+                width: auto !important;
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                bottom: 0 !important;
+                z-index: 1 !important;
+            }
+            .iti__selected-country:hover {
+                background-color: rgba(255, 255, 255, 0.03) !important;
+            }
+            
+            /* Flag container */
+            .iti__flag-container {
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                bottom: 0 !important;
+            }
+            
+            /* Arrow */
+            .iti__arrow {
+                border-top-color: rgba(255, 255, 255, 0.4) !important;
+                margin-left: 6px !important;
+            }
+            
+            /* Dial code */
+            .iti__selected-dial-code {
+                color: rgba(255, 255, 255, 0.7) !important;
+                margin-left: 6px !important;
+            }
+            
+            /* Search container - Dark with no extra padding */
+            .iti__search-container {
+                background-color: transparent !important;
+                padding: 8px 8px 4px 8px !important;
+                max-width: 300px !important;
+                width: 100% !important;
+            }
+            
+            /* Search input - Fixed padding, starts from border - OVERRIDE */
+            .iti__search-input,
+            input.iti__search-input {
+                background-color: rgba(255, 255, 255, 0.08) !important;
+                border: 1px solid rgba(188, 249, 6, 0.2) !important;
+                color: #ffffff !important;
+                padding: 8px 12px !important;
+                padding-left: 12px !important;
+                border-radius: 0.5rem !important;
+                margin: 0 !important;
+                width: 100% !important;
+                font-size: 13px !important;
+                height: auto !important;
+            }
+            .iti__search-input::placeholder {
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+            .iti__search-input:focus {
+                outline: none !important;
+                border-color: #bcf906 !important;
+                box-shadow: 0 0 0 2px rgba(188, 249, 6, 0.2) !important;
+                background-color: rgba(255, 255, 255, 0.12) !important;
+            }
+            
+            /* Divider - Subtle with theme color */
+            .iti__divider {
+                border-bottom: 1px solid rgba(188, 249, 6, 0.15) !important;
+                margin: 4px 8px !important;
+            }
+            
+            /* Country name */
+            .iti__country-name {
+                color: rgba(255, 255, 255, 0.7) !important;
+                margin-left: 6px !important;
+            }
+            
+            /* Dial code in list */
+            .iti__dial-code {
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+            
+            /* Flag */
+            .iti__flag {
+                background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.12/build/img/flags.png") !important;
+            }
+            
+            /* Preferred countries - Subtle highlight */
+            .iti__preferred {
+                background-color: rgba(188, 249, 6, 0.05) !important;
+            }
+            
+            /* ===== UI/UX POLISH REFINEMENTS ===== */
+            
+            /* Custom Scrollbar for Dropdown */
+            .iti__country-list::-webkit-scrollbar {
+                width: 6px !important;
+            }
+            .iti__country-list::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.05) !important;
+                border-radius: 3px !important;
+            }
+            .iti__country-list::-webkit-scrollbar-thumb {
+                background: rgba(188, 249, 6, 0.3) !important;
+                border-radius: 3px !important;
+            }
+            .iti__country-list::-webkit-scrollbar-thumb:hover {
+                background: rgba(188, 249, 6, 0.5) !important;
+            }
+            
+            /* Smooth Dropdown Animation */
+            .iti__country-list {
+                animation: dropdownFadeIn 0.2s ease-out !important;
+                transform-origin: top !important;
+            }
+            @keyframes dropdownFadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-8px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* Smooth Transitions for Interactive Elements */
+            .iti__country,
+            .iti__search-input,
+            .iti__selected-country {
+                transition: all 0.2s ease !important;
+            }
+            
+            /* Enhanced Active/Selected Country State */
+            .iti__country.iti__active::after {
+                content: "✓" !important;
+                float: right !important;
+                color: #bcf906 !important;
+                font-weight: bold !important;
+                margin-left: 8px !important;
+            }
+            
+            /* Search Input Focus Enhancement */
+            .iti__search-input:focus {
+                transform: scale(1.01) !important;
+            }
+            
+            /* Subtle Hover Lift Effect on Country Items */
+            .iti__country:hover {
+                transform: translateX(2px) !important;
+            }
+            
+            /* Empty Search State Styling */
+            .iti__country.iti__no-results-message {
+                color: rgba(255, 255, 255, 0.5) !important;
+                text-align: center !important;
+                padding: 16px 12px !important;
+                font-style: italic !important;
+            }
+            
+            /* Divider Enhancement */
+            .iti__divider {
+                position: relative !important;
+                overflow: hidden !important;
+            }
+            .iti__divider::after {
+                content: "" !important;
+                position: absolute !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                width: 30% !important;
+                height: 1px !important;
+                background: linear-gradient(90deg, #bcf906, transparent) !important;
+                animation: dividerGlow 2s ease-in-out infinite !important;
+            }
+            @keyframes dividerGlow {
+                0%, 100% { opacity: 0.3; }
+                50% { opacity: 0.7; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- Form Submission & Analytics Script -->
+    <script>
+        // ===== FORM SUBMISSION LOGIC =====
+        document.addEventListener('DOMContentLoaded', function () {
+            const forms = document.querySelectorAll('form');
+
+            forms.forEach(form => {
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    // Get form data
+                    const formData = new FormData(form);
+                    const submitButton = form.querySelector('button[type="submit"]') || form.querySelector('button');
+                    const originalButtonText = submitButton.innerHTML;
+
+                    // Client-side validation
+                    const name = formData.get('name') || form.querySelector('input[type="text"]')?.value;
+                    const email = formData.get('email') || form.querySelector('input[type="email"]')?.value;
+                    const phone = iti.getNumber(); // Get full international number
+                    const countryCode = iti.getSelectedCountryData().dialCode;
+                    const status = formData.get('status') || form.querySelector('select')?.value;
+
+                    // Validation
+                    if (!name || name.trim().length < 2) {
+                        showMessage('Please enter your full name', 'error');
+                        return;
+                    }
+
+                    if (!email || !isValidEmail(email)) {
+                        showMessage('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    if (!iti.isValidNumber()) {
+                        showMessage('Please enter a valid phone number', 'error');
+                        return;
+                    }
+
+                    if (!status) {
+                        showMessage('Please select your current status', 'error');
+                        return;
+                    }
+
+                    // Show loading state
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = `
+                        <svg class="animate-spin h-5 w-5 inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Submitting...
+                    `;
+
+                    try {
+                        // Prepare data for submission
+                        const submissionData = {
+                            name: name.trim(),
+                            email: email.trim().toLowerCase(),
+                            phone: phone,
+                            countryCode: '+' + countryCode,
+                            status: status,
+                            source: 'cybersecurity_landing',
+                            timestamp: new Date().toISOString(),
+                            userAgent: navigator.userAgent,
+                            referrer: document.referrer || 'direct'
+                        };
+
+                        // Submit to Google Sheets (replace with your actual Google Apps Script URL)
+                        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+                        const response = await fetch(GOOGLE_SCRIPT_URL, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(submissionData)
+                        });
+
+                        // Track conversion with Meta Pixel (if available)
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'Lead', {
+                                content_name: 'Cybersecurity Course Signup',
+                                content_category: 'Education',
+                                value: 0,
+                                currency: 'INR'
+                            });
+                        }
+
+                        // Track with Google Analytics (if available)
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'generate_lead', {
+                                'event_category': 'Form',
+                                'event_label': 'Cybersecurity Signup',
+                                'value': 1
+                            });
+                        }
+
+                        // Show success message
+                        showMessage('🎉 Success! Check your email for access details.', 'success');
+
+                        // Reset form
+                        form.reset();
+                        iti.setNumber('');
+
+                        // Optional: Redirect after delay
+                        // setTimeout(() => {
+                        //     window.location.href = '/thank-you';
+                        // }, 2000);
+
+                    } catch (error) {
+                        console.error('Form submission error:', error);
+                        showMessage('Something went wrong. Please try again or contact support.', 'error');
+                    } finally {
+                        // Restore button
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    }
+                });
+            });
+
+            // Email validation helper
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            // Message display function
+            function showMessage(message, type = 'info') {
+                // Remove existing messages
+                const existingMessages = document.querySelectorAll('.form-message');
+                existingMessages.forEach(msg => msg.remove());
+
+                // Create message element
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `form-message fixed top-24 right-4 md:right-8 z-50 px-6 py-4 rounded-xl shadow-2xl backdrop-blur-xl border max-w-md animate-slide-in`;
+
+                if (type === 'success') {
+                    messageDiv.classList.add('bg-primary/20', 'border-primary', 'text-primary');
+                } else if (type === 'error') {
+                    messageDiv.classList.add('bg-red-500/20', 'border-red-500', 'text-red-400');
+                } else {
+                    messageDiv.classList.add('bg-white/10', 'border-white/20', 'text-white');
+                }
+
+                messageDiv.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="text-lg">${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ'}</span>
+                        <p class="font-medium">${message}</p>
+                        <button onclick="this.parentElement.parentElement.remove()" class="ml-auto text-current opacity-70 hover:opacity-100">
+                            <span class="material-symbols-outlined text-xl">close</span>
+                        </button>
+                    </div>
+                `;
+
+                document.body.appendChild(messageDiv);
+
+                // Auto-remove after 5 seconds
+                setTimeout(() => {
+                    messageDiv.style.opacity = '0';
+                    messageDiv.style.transform = 'translateX(100%)';
+                    setTimeout(() => messageDiv.remove(), 300);
+                }, 5000);
+            }
+
+            // Add animation styles
+            const animationStyle = document.createElement('style');
+            animationStyle.textContent = `
+                @keyframes slide-in {
+                    from {
+                        opacity: 0;
+                        transform: translateX(100%);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                .animate-slide-in {
+                    animation: slide-in 0.3s ease-out;
+                }
+                .form-message {
+                    transition: all 0.3s ease-out;
+                }
+            `;
+            document.head.appendChild(animationStyle);
+        });
+
+        // ===== SMOOTH SCROLL FOR NAVIGATION =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // ===== CONTACT SUPPORT BUTTON =====
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Contact Support')) {
+                button.addEventListener('click', function () {
+                    const message = encodeURIComponent('Hello! I need help with the Cybersecurity course.');
+                    window.open(`https://wa.me/919207772415?text=${message}`, '_blank');
+                });
+            }
+        });
+
+        // ===== FINAL CTA BUTTONS =====
+        document.addEventListener('DOMContentLoaded', function () {
+            // "ENROLL FREE NOW" button - scroll to form
+            const enrollButtons = document.querySelectorAll('button');
+            enrollButtons.forEach(button => {
+                if (button.textContent.includes('ENROLL FREE NOW')) {
+                    button.addEventListener('click', function () {
+                        const heroForm = document.querySelector('form');
+                        if (heroForm) {
+                            heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            // Focus first input after scroll
+                            setTimeout(() => {
+                                const firstInput = heroForm.querySelector('input');
+                                if (firstInput) firstInput.focus();
+                            }, 500);
+                        }
+                    });
+                }
+
+                // "Watch Sample Video" button - open first video
+                if (button.textContent.includes('Watch Sample Video')) {
+                    button.addEventListener('click', function () {
+                        const firstVideo = document.querySelector('.reel-card video');
+                        if (firstVideo) {
+                            firstVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            setTimeout(() => {
+                                const playOverlay = firstVideo.closest('.reel-card').querySelector('.play-overlay');
+                                if (playOverlay) playOverlay.click();
+                            }, 500);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Google Analytics (Replace with your GA4 Measurement ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Meta Pixel Code (Replace with your Pixel ID) -->
+    <script>
+        // Only initialize Meta Pixel if a valid ID is provided
+        const META_PIXEL_ID = 'YOUR_PIXEL_ID_HERE';
+
+        if (META_PIXEL_ID && META_PIXEL_ID !== 'YOUR_PIXEL_ID_HERE') {
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+                n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', META_PIXEL_ID);
+            fbq('track', 'PageView');
+        } else {
+            // Create stub function to prevent errors
+            window.fbq = function () { console.log('Meta Pixel not configured'); };
+        }
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" /></noscript>
+
 </body>
 
 </html>
