@@ -133,9 +133,16 @@
             <div class="flex items-center gap-3">
                 <img src="images/Brototype-without-tagline-white-LOGO-SVG.svg" alt="Brototype Logo" class="h-8 md:h-10">
             </div>
-            <div class="hidden md:flex items-center gap-8">
+            <div class="flex items-center gap-8">
+                <!-- Mobile CTA Button (visible only on mobile) -->
+                <button id="mobileCTA"
+                    class="md:hidden bg-primary text-black px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1 hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-sm">bolt</span>
+                    GET ACCESS
+                </button>
+                <!-- Desktop CTA Button (visible only on desktop) -->
                 <button id="headerCTA"
-                    class="bg-primary text-black px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 hover:scale-105 transition-transform">
+                    class="hidden md:flex bg-primary text-black px-6 py-2.5 rounded-full text-sm font-bold items-center gap-2 hover:scale-105 transition-transform">
                     <span class="material-symbols-outlined text-sm">bolt</span>
                     GET FREE ACCESS
                 </button>
@@ -177,6 +184,12 @@
                         <span class="material-symbols-outlined text-primary">schedule</span> Lifetime Access
                     </div>
                 </div>
+                <!-- Mobile CTA Button (visible only on mobile) -->
+                <button id="heroMobileCTA"
+                    class="lg:hidden w-full bg-primary text-black px-6 py-4 rounded-full text-base font-black flex items-center justify-center gap-2 hover:scale-105 transition-transform shadow-[0_0_30px_rgba(188,249,6,0.3)]">
+                    <span class="material-symbols-outlined">bolt</span>
+                    START LEARNING FREE
+                </button>
             </div>
             <!-- Right Side: Signup Form -->
             <div class="relative z-10">
@@ -1449,6 +1462,7 @@
             initialCountry: "in",
             preferredCountries: ["in", "us", "gb", "ae", "sa"],
             separateDialCode: true,
+            dropdownContainer: document.body,
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.12/build/js/utils.js"
         });
 
@@ -1494,6 +1508,46 @@
                 width: 300px !important;
                 z-index: 1000 !important;
                 margin-top: 4px !important;
+            }
+            
+            /* Mobile responsive fixes for country dropdown */
+            @media (max-width: 640px) {
+                .iti__country-list {
+                    width: calc(100vw - 40px) !important;
+                    max-width: calc(100vw - 40px) !important;
+                    left: 50% !important;
+                    transform: translateX(-50%) !important;
+                    margin-left: 0 !important;
+                }
+                .iti__dropdown-content {
+                    width: calc(100vw - 40px) !important;
+                    max-width: calc(100vw - 40px) !important;
+                }
+            }
+            
+            /* Mobile responsive fixes for Thank You popup */
+            @media (max-width: 640px) {
+                #thankYouModal > div {
+                    padding: 1.5rem !important;
+                    margin: 1rem !important;
+                    max-height: 90vh !important;
+                    overflow-y: auto !important;
+                }
+                #thankYouModal h2 {
+                    font-size: 2rem !important;
+                    line-height: 1.2 !important;
+                }
+                #thankYouModal p {
+                    font-size: 0.875rem !important;
+                }
+                #thankYouModal .space-y-4 {
+                    gap: 0.75rem !important;
+                }
+                #thankYouModal a {
+                    padding-top: 1rem !important;
+                    padding-bottom: 1rem !important;
+                    font-size: 0.875rem !important;
+                }
             }
             
             /* Individual country items - Reduced spacing */
@@ -1962,6 +2016,22 @@
             });
         }
 
+        // ===== HERO MOBILE CTA BUTTON =====
+        const heroMobileCTA = document.getElementById('heroMobileCTA');
+        if (heroMobileCTA) {
+            heroMobileCTA.addEventListener('click', function () {
+                const heroForm = document.querySelector('form');
+                if (heroForm) {
+                    heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Focus first input after scroll
+                    setTimeout(() => {
+                        const firstInput = heroForm.querySelector('input');
+                        if (firstInput) firstInput.focus();
+                    }, 500);
+                }
+            });
+        }
+
         // ===== FINAL CTA BUTTONS =====
         document.addEventListener('DOMContentLoaded', function () {
             // "ENROLL FREE NOW" button - scroll to form
@@ -2034,62 +2104,61 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" /></noscript>
 
-    <!-- Sticky Mobile CTA Button -->
-    <div
-        class="md:hidden fixed bottom-0 left-0 right-0 z-40 p-4 bg-gradient-to-t from-background-dark via-background-dark to-transparent">
-        <button id="mobileCTA"
-            class="w-full bg-primary text-black px-6 py-4 rounded-full text-base font-black flex items-center justify-center gap-2 hover:scale-105 transition-transform shadow-[0_0_30px_rgba(188,249,6,0.3)]">
-            <span class="material-symbols-outlined">bolt</span>
-            GET FREE ACCESS
-        </button>
-    </div>
+
 
     <!-- Thank You Popup Modal -->
     <div id="thankYouModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4"
-        style="background-color: rgba(0, 0, 0, 0.5);">
+        style="background-color: rgba(0, 0, 0, 0.8);">
         <div
-            class="relative bg-white dark:bg-gray-100 rounded-3xl shadow-2xl max-w-2xl w-full p-8 md:p-12 animate-scale-in">
+            class="relative bg-background-dark border border-white/10 rounded-xl shadow-2xl max-w-2xl w-full p-8 md:p-12 animate-scale-in">
+            <!-- Glow Effect -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 blur-[100px] rounded-full"></div>
+
             <!-- Close Button -->
             <button id="closeModalBtn"
-                class="absolute top-6 right-6 text-gray-500 hover:text-gray-700 transition-colors">
+                class="absolute top-6 right-6 text-white/50 hover:text-primary transition-colors z-10">
                 <span class="material-symbols-outlined text-3xl">close</span>
             </button>
 
             <!-- Success Icon -->
             <div class="flex justify-center mb-6">
-                <div class="w-32 h-32 rounded-full bg-green-100 flex items-center justify-center">
-                    <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div
+                    class="w-32 h-32 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center relative">
+                    <div class="absolute inset-0 rounded-full bg-primary/5 animate-ping"></div>
+                    <svg class="w-16 h-16 text-primary relative z-10" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                     </svg>
                 </div>
             </div>
 
             <!-- Heading -->
-            <h2 class="text-4xl md:text-5xl font-black text-center text-gray-900 mb-4">You are in!</h2>
+            <h2 class="text-4xl md:text-5xl font-black text-center text-white mb-4">You are in!</h2>
 
             <!-- Description -->
-            <p class="text-center text-gray-600 text-lg mb-8">
+            <p class="text-center text-white/60 text-lg mb-8">
                 Click the Buttons shown below for Watching Videos or Tech Support
             </p>
 
             <!-- CTA Buttons -->
             <div class="space-y-4 mb-6">
                 <!-- Watch Videos Button -->
-                <a href="https://learn.brototype.com" target="_blank"
-                    class="block w-full bg-teal-600 hover:bg-teal-700 text-white font-bold text-lg py-5 rounded-2xl text-center transition-all shadow-lg hover:shadow-xl">
+                <a href="https://learn.brototype.com/course/Cybersecurity_Tutorial_Challenge" target="_blank"
+                    class="block w-full bg-primary text-black font-black text-lg py-5 rounded-xl text-center transition-all shadow-lg hover:shadow-[0_0_30px_rgba(188,249,6,0.3)] hover:scale-105 flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined">play_circle</span>
                     Click here For Watch Videos
                 </a>
 
                 <!-- Tech Support Button -->
-                <a href="https://wa.me/917034395811?text=Hello!%20I%20need%20help%20with%20the%20Cybersecurity%20course."
-                    target="_blank"
-                    class="block w-full bg-gray-700 hover:bg-gray-800 text-white font-bold text-lg py-5 rounded-2xl text-center transition-all shadow-lg hover:shadow-xl">
+                <a href="https://support.brototype.com/" target="_blank"
+                    class="block w-full bg-white/5 border border-white/10 hover:border-primary/50 text-white font-bold text-lg py-5 rounded-xl text-center transition-all hover:bg-white/10 flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined">support_agent</span>
                     Click here to Ask Your Technical Doubts
                 </a>
             </div>
 
             <!-- Footer Note -->
-            <p class="text-center text-gray-500 text-base">
+            <p class="text-center text-white/40 text-base">
                 These same links will be shared to your mail.
             </p>
         </div>
