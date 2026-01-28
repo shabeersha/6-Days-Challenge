@@ -14,15 +14,15 @@
         content="cybersecurity course, ethical hacking, Malayalam tutorials, free cybersecurity, Kali Linux, penetration testing, OWASP, network security, Brototype" />
     <meta name="author" content="Brototype" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.brototype.com/cybersecurity" />
+    <link rel="canonical" href="https://www.brototype.com/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.brototype.com/cybersecurity" />
+    <meta property="og:url" content="https://learningclub.brototype.com/cybersecurity" />
     <meta property="og:title" content="Master Cyber Security for FREE | Brototype" />
     <meta property="og:description"
         content="Learn cybersecurity from scratch with 40+ Malayalam video tutorials. Get instant access to premium content and 24/7 tech support absolutely free." />
-    <meta property="og:image" content="https://www.brototype.com/images/cybersecurity-og-image.jpg" />
+    <meta property="og:image" content="https://learningclub.brototype.com/images/cybersecurity-og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
@@ -30,7 +30,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.brototype.com/cybersecurity" />
+    <meta name="twitter:url" content="https://learningclub.brototype.com/cybersecurity" />
     <meta name="twitter:title" content="Master Cyber Security for FREE | Brototype" />
     <meta name="twitter:description"
         content="Learn cybersecurity from scratch with 40+ Malayalam video tutorials. Get instant access to premium content and 24/7 tech support absolutely free." />
@@ -102,7 +102,7 @@
             "price": "0",
             "priceCurrency": "INR",
             "availability": "https://schema.org/InStock",
-            "url": "https://www.brototype.com/cybersecurity"
+            "url": "https://learningclub.brototype.com/cybersecurity"
         },
         "hasCourseInstance": {
             "@type": "CourseInstance",
@@ -118,7 +118,8 @@
             "Network Security",
             "OWASP Top 10",
             "Kali Linux",
-            "Web Application Security"
+            "Web Application Security",
+            "Burp Suit 101"
         ]
     }
     </script>
@@ -133,14 +134,10 @@
                 <img src="images/Brototype-without-tagline-white-LOGO-SVG.svg" alt="Brototype Logo" class="h-8 md:h-10">
             </div>
             <div class="hidden md:flex items-center gap-8">
-                <nav class="flex gap-6 text-sm font-medium">
-                    <a class="hover:text-primary transition-colors" href="#syllabus">Curriculum</a>
-                    <a class="hover:text-primary transition-colors" href="#support">Support</a>
-                </nav>
-                <button
+                <button id="headerCTA"
                     class="bg-primary text-black px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 hover:scale-105 transition-transform">
-                    <span class="material-symbols-outlined text-sm">headset_mic</span>
-                    Contact Support
+                    <span class="material-symbols-outlined text-sm">bolt</span>
+                    GET FREE ACCESS
                 </button>
             </div>
         </div>
@@ -1759,30 +1756,11 @@
                     `;
 
                     try {
-                        // Prepare data for submission
-                        const submissionData = {
-                            name: name.trim(),
-                            email: email.trim().toLowerCase(),
-                            phone: phone,
-                            countryCode: '+' + countryCode,
-                            status: status,
-                            source: 'cybersecurity_landing',
-                            timestamp: new Date().toISOString(),
-                            userAgent: navigator.userAgent,
-                            referrer: document.referrer || 'direct'
-                        };
+                        // Mock submission - just simulate success
+                        // In production, you would submit to your API here
 
-                        // Submit to Google Sheets (replace with your actual Google Apps Script URL)
-                        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
-
-                        const response = await fetch(GOOGLE_SCRIPT_URL, {
-                            method: 'POST',
-                            mode: 'no-cors',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(submissionData)
-                        });
+                        // Simulate a brief delay for realism
+                        await new Promise(resolve => setTimeout(resolve, 800));
 
                         // Track conversion with Meta Pixel (if available)
                         if (typeof fbq !== 'undefined') {
@@ -1803,17 +1781,12 @@
                             });
                         }
 
-                        // Show success message
-                        showMessage('🎉 Success! Check your email for access details.', 'success');
+                        // Show thank you popup
+                        showThankYouModal();
 
                         // Reset form
                         form.reset();
                         iti.setNumber('');
-
-                        // Optional: Redirect after delay
-                        // setTimeout(() => {
-                        //     window.location.href = '/thank-you';
-                        // }, 2000);
 
                     } catch (error) {
                         console.error('Form submission error:', error);
@@ -1869,6 +1842,41 @@
                 }, 5000);
             }
 
+            // Thank You Modal Functions
+            function showThankYouModal() {
+                const modal = document.getElementById('thankYouModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            }
+
+            function hideThankYouModal() {
+                const modal = document.getElementById('thankYouModal');
+                if (modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            }
+
+            // Close modal on close button click
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', hideThankYouModal);
+            }
+
+            // Don't close modal when clicking overlay (only close button works)
+            const thankYouModal = document.getElementById('thankYouModal');
+            if (thankYouModal) {
+                thankYouModal.addEventListener('click', function (e) {
+                    // Only close if clicking directly on the modal background, not its children
+                    // Actually, based on requirements, we DON'T want to close on overlay click
+                    // So we'll do nothing here
+                });
+            }
+
             // Add animation styles
             const animationStyle = document.createElement('style');
             animationStyle.textContent = `
@@ -1887,6 +1895,19 @@
                 }
                 .form-message {
                     transition: all 0.3s ease-out;
+                }
+                @keyframes scale-in {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.9);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+                .animate-scale-in {
+                    animation: scale-in 0.3s ease-out;
                 }
             `;
             document.head.appendChild(animationStyle);
@@ -1909,15 +1930,37 @@
             });
         });
 
-        // ===== CONTACT SUPPORT BUTTON =====
-        document.querySelectorAll('button').forEach(button => {
-            if (button.textContent.includes('Contact Support')) {
-                button.addEventListener('click', function () {
-                    const message = encodeURIComponent('Hello! I need help with the Cybersecurity course.');
-                    window.open(`https://wa.me/919207772415?text=${message}`, '_blank');
-                });
-            }
-        });
+        // ===== HEADER CTA BUTTON =====
+        const headerCTA = document.getElementById('headerCTA');
+        if (headerCTA) {
+            headerCTA.addEventListener('click', function () {
+                const heroForm = document.querySelector('form');
+                if (heroForm) {
+                    heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Focus first input after scroll
+                    setTimeout(() => {
+                        const firstInput = heroForm.querySelector('input');
+                        if (firstInput) firstInput.focus();
+                    }, 500);
+                }
+            });
+        }
+
+        // ===== MOBILE CTA BUTTON =====
+        const mobileCTA = document.getElementById('mobileCTA');
+        if (mobileCTA) {
+            mobileCTA.addEventListener('click', function () {
+                const heroForm = document.querySelector('form');
+                if (heroForm) {
+                    heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Focus first input after scroll
+                    setTimeout(() => {
+                        const firstInput = heroForm.querySelector('input');
+                        if (firstInput) firstInput.focus();
+                    }, 500);
+                }
+            });
+        }
 
         // ===== FINAL CTA BUTTONS =====
         document.addEventListener('DOMContentLoaded', function () {
@@ -1990,6 +2033,67 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" /></noscript>
+
+    <!-- Sticky Mobile CTA Button -->
+    <div
+        class="md:hidden fixed bottom-0 left-0 right-0 z-40 p-4 bg-gradient-to-t from-background-dark via-background-dark to-transparent">
+        <button id="mobileCTA"
+            class="w-full bg-primary text-black px-6 py-4 rounded-full text-base font-black flex items-center justify-center gap-2 hover:scale-105 transition-transform shadow-[0_0_30px_rgba(188,249,6,0.3)]">
+            <span class="material-symbols-outlined">bolt</span>
+            GET FREE ACCESS
+        </button>
+    </div>
+
+    <!-- Thank You Popup Modal -->
+    <div id="thankYouModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.5);">
+        <div
+            class="relative bg-white dark:bg-gray-100 rounded-3xl shadow-2xl max-w-2xl w-full p-8 md:p-12 animate-scale-in">
+            <!-- Close Button -->
+            <button id="closeModalBtn"
+                class="absolute top-6 right-6 text-gray-500 hover:text-gray-700 transition-colors">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+
+            <!-- Success Icon -->
+            <div class="flex justify-center mb-6">
+                <div class="w-32 h-32 rounded-full bg-green-100 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-black text-center text-gray-900 mb-4">You are in!</h2>
+
+            <!-- Description -->
+            <p class="text-center text-gray-600 text-lg mb-8">
+                Click the Buttons shown below for Watching Videos or Tech Support
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="space-y-4 mb-6">
+                <!-- Watch Videos Button -->
+                <a href="https://learn.brototype.com" target="_blank"
+                    class="block w-full bg-teal-600 hover:bg-teal-700 text-white font-bold text-lg py-5 rounded-2xl text-center transition-all shadow-lg hover:shadow-xl">
+                    Click here For Watch Videos
+                </a>
+
+                <!-- Tech Support Button -->
+                <a href="https://wa.me/917034395811?text=Hello!%20I%20need%20help%20with%20the%20Cybersecurity%20course."
+                    target="_blank"
+                    class="block w-full bg-gray-700 hover:bg-gray-800 text-white font-bold text-lg py-5 rounded-2xl text-center transition-all shadow-lg hover:shadow-xl">
+                    Click here to Ask Your Technical Doubts
+                </a>
+            </div>
+
+            <!-- Footer Note -->
+            <p class="text-center text-gray-500 text-base">
+                These same links will be shared to your mail.
+            </p>
+        </div>
+    </div>
 
 </body>
 
