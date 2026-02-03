@@ -208,6 +208,27 @@
                         <h3 class="text-2xl font-bold">Get Free Access Now</h3>
                         <p class="text-white/60 text-sm">Unlock 40+ Malayalam videos + 24/7 tech support.</p>
                         <form class="space-y-4">
+                            <!-- Hidden Tracking Fields -->
+                            <input type="hidden" name="zf_referrer_name"
+                                value=""><!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
+                            <input type="hidden" name="zf_redirect_url"
+                                value=""><!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
+                            <input type="hidden" name="zc_gad"
+                                value=""><!-- If GCLID is enabled in Zoho CRM Integration, click details of AdWords Ads will be pushed to Zoho CRM -->
+                            <input type="hidden" name="utm_source" value="" />
+                            <input type="hidden" name="utm_medium" value="" />
+                            <input type="hidden" name="utm_campaign" value="" />
+                            <input type="hidden" name="utm_term" value="" />
+                            <input type="hidden" name="utm_content" value="" />
+                            <input type="hidden" name="utm_id" value="" />
+                            <input type="hidden" name="utm_adgroup" value="" />
+                            <input type="hidden" name="utm_matchtype" value="" />
+                            <input type="hidden" name="utm_audience" value="" />
+                            <input type="hidden" name="utm_adgroupid" value="" />
+                            <input type="hidden" name="ref" value="" />
+                            <input type="hidden" name="utm_network" value="" />
+                            <input type="hidden" name="utm_placement" value="" />
+
                             <div>
                                 <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Full
                                     Name</label>
@@ -236,9 +257,10 @@
                                     class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-white/70">
                                     <option value="" class="bg-background-dark" disabled selected>Select your current
                                         status</option>
-                                    <option value="student" class="bg-background-dark">Student</option>
-                                    <option value="working" class="bg-background-dark">Working Professional</option>
-                                    <option value="jobseeker" class="bg-background-dark">Job Seeker</option>
+                                    <option value="Student" class="bg-background-dark">Student</option>
+                                    <option value="Working Professional" class="bg-background-dark">Working Professional
+                                    </option>
+                                    <option value="Graduate (Job Seeker)" class="bg-background-dark">Job Seeker</option>
                                     <option value="other" class="bg-background-dark">Other</option>
                                 </select>
                             </div>
@@ -1788,6 +1810,122 @@
 
     <!-- Form Submission & Analytics Script -->
     <script>
+        // ===== UTM PARAMETER CAPTURE =====
+        document.addEventListener('DOMContentLoaded', function () {
+            captureUTMParameters();
+        });
+
+        function captureUTMParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Comprehensive tracking parameters
+            const trackingParams = {
+                // Zoho-specific fields
+                zf_referrer_name: urlParams.get('zf_referrer_name') || '',
+                zf_redirect_url: urlParams.get('zf_redirect_url') || '',
+                zc_gad: urlParams.get('gclid') || '', // Google Ads Click ID
+
+                // Standard UTM parameters
+                utm_source: urlParams.get('utm_source') || '',
+                utm_medium: urlParams.get('utm_medium') || '',
+                utm_campaign: urlParams.get('utm_campaign') || '',
+                utm_term: urlParams.get('utm_term') || '',
+                utm_content: urlParams.get('utm_content') || '',
+
+                // Extended UTM parameters
+                utm_id: urlParams.get('utm_id') || '',
+                utm_adgroup: urlParams.get('utm_adgroup') || '',
+                utm_matchtype: urlParams.get('utm_matchtype') || '',
+                utm_audience: urlParams.get('utm_audience') || '',
+                utm_adgroupid: urlParams.get('utm_adgroupid') || '',
+                utm_network: urlParams.get('utm_network') || '',
+                utm_placement: urlParams.get('utm_placement') || '',
+
+                // Referral tracking
+                ref: urlParams.get('ref') || ''
+            };
+
+            // Store in sessionStorage for persistence
+            sessionStorage.setItem('trackingParams', JSON.stringify(trackingParams));
+
+            // Populate hidden fields in all forms
+            Object.keys(trackingParams).forEach(key => {
+                const fields = document.querySelectorAll(`input[name="${key}"]`);
+                fields.forEach(field => {
+                    if (field) field.value = trackingParams[key];
+                });
+            });
+        }
+
+        // ===== ZOHO FORM SUBMISSION =====
+        async function submitToZohoInbound(formData) {
+            const zohoUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurity2/formperma/T-wYQknFnuYVHWhG26-NGiuy5arKHMFnf5eKc4kTSUw/htmlRecords/submit';
+
+            // Split name into first and last
+            const fullName = formData.name.trim();
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0];
+            const lastName = nameParts.slice(1).join(' ') || firstName;
+
+            // Prepare Zoho form data
+            const zohoData = new FormData();
+            zohoData.append('Name_First', firstName);
+            zohoData.append('Name_Last', lastName);
+            zohoData.append('Email', formData.email);
+            zohoData.append('PhoneNumber_countrycode', formData.phone); // Full phone with country code
+            zohoData.append('PhoneNumber_countrycodeval', '+' + formData.countryCode); // Country code with +
+            zohoData.append('Dropdown', formData.status);
+
+            // Submit to Zoho (using no-cors mode as Zoho forms typically require it)
+            try {
+                const response = await fetch(zohoUrl, {
+                    method: 'POST',
+                    body: zohoData,
+                    mode: 'no-cors'
+                });
+
+                console.log('Zoho Inbound submission completed');
+                return { success: true };
+            } catch (error) {
+                console.error('Zoho Inbound submission error:', error);
+                throw error;
+            }
+        }
+
+        async function submitToZohoOutbound(formData) {
+            const zohoUrl = 'https://forms.zohopublic.in/brototype/form/PythonDjangoRegisterNow1/formperma/2blLdf9uOxRRDuj5AYBZgGFfwImv5Gb5KmVRgIKqsWc/htmlRecords/submit';
+
+            // Split name into first and last
+            const fullName = formData.name.trim();
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0];
+            const lastName = nameParts.slice(1).join(' ') || firstName;
+
+            // Prepare Zoho form data
+            const zohoData = new FormData();
+            zohoData.append('Name_First', firstName);
+            zohoData.append('Name_Last', lastName);
+            zohoData.append('Email', formData.email);
+            zohoData.append('PhoneNumber_countrycode', formData.phone); // Full phone with country code
+            zohoData.append('PhoneNumber_countrycodeval', '+' + formData.countryCode); // Country code with +
+            zohoData.append('Dropdown', formData.status);
+
+            // Submit to Zoho (using no-cors mode as Zoho forms typically require it)
+            try {
+                const response = await fetch(zohoUrl, {
+                    method: 'POST',
+                    body: zohoData,
+                    mode: 'no-cors'
+                });
+
+                console.log('Zoho Outbound submission completed');
+                return { success: true };
+            } catch (error) {
+                console.error('Zoho Outbound submission error:', error);
+                throw error;
+            }
+        }
+
         // ===== FORM SUBMISSION LOGIC =====
         document.addEventListener('DOMContentLoaded', function () {
             const forms = document.querySelectorAll('form');
@@ -1807,6 +1945,7 @@
                     const phone = iti.getNumber(); // Get full international number
                     const countryCode = iti.getSelectedCountryData().dialCode;
                     const status = formData.get('status') || form.querySelector('select')?.value;
+                    const utmSource = formData.get('utm_source') || '';
 
                     // Validation
                     if (!name || name.trim().length < 2) {
@@ -1840,11 +1979,30 @@
                     `;
 
                     try {
-                        // Mock submission - just simulate success
-                        // In production, you would submit to your API here
+                        // Prepare submission data
+                        const submissionData = {
+                            name: name,
+                            email: email,
+                            phone: phone,
+                            countryCode: countryCode,
+                            status: status,
+                            utm_source: formData.get('utm_source'),
+                            utm_medium: formData.get('utm_medium'),
+                            utm_campaign: formData.get('utm_campaign'),
+                            utm_content: formData.get('utm_content'),
+                            utm_term: formData.get('utm_term'),
+                            ref: formData.get('ref')
+                        };
 
-                        // Simulate a brief delay for realism
-                        await new Promise(resolve => setTimeout(resolve, 800));
+                        // Submit to Zoho Inbound if utm_source is youtube_malayalam
+                        if (utmSource === 'youtube_malayalam') {
+                            await submitToZohoInbound(submissionData);
+                            console.log('Form submitted to Zoho Inbound');
+                        } else {
+                            // Submit to Zoho Outbound for all other traffic
+                            await submitToZohoOutbound(submissionData);
+                            console.log('Form submitted to Zoho Outbound');
+                        }
 
                         // Track conversion with Meta Pixel (if available)
                         if (typeof fbq !== 'undefined') {
