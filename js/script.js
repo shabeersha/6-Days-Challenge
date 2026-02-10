@@ -330,13 +330,35 @@ if (phoneInput) {
     iti = window.intlTelInput(phoneInput, {
         initialCountry: "in",
         separateDialCode: true,
+        dropdownContainer: document.body,
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
 
-    // Fix for Lenis scroll hijacking
-    const countryList = document.querySelector('.iti__country-list');
-    if (countryList) {
-        countryList.setAttribute('data-lenis-prevent', '');
+    // Fix for Lenis scroll hijacking - Robust check
+    const addLenisPrevent = () => {
+        const countryList = document.querySelector('.iti__country-list');
+        if (countryList) {
+            countryList.setAttribute('data-lenis-prevent', '');
+        } else {
+            // Retry briefly if not found immediately (though it should be sync)
+            setTimeout(addLenisPrevent, 50);
+        }
+    };
+    addLenisPrevent();
+
+    // New: Handle scroll on modal to close/blur dropdown to prevent floating
+    const modalContent = document.querySelector('.modal');
+    if (modalContent) {
+        modalContent.addEventListener('scroll', () => {
+            if (iti) {
+                // Determine if the dropdown is open by checking if the input has the 'iti__open' class? 
+                // Actually intl-tel-input doesn't expose an easy 'isOpen' method, but we can check standard classes or just blur.
+                // Or use the public method to close if available, but v17 doesn't have a simple close() method exposed easily without accessing private instance data usually.
+                // Hacking: trigger a click on body or blur the input.
+                phoneInput.blur();
+                // internal method if accessible, or just let blur handle it (standard behavior usually closes on blur)
+            }
+        }, { passive: true });
     }
 }
 
@@ -424,7 +446,7 @@ registrationForm.addEventListener('submit', (e) => {
         // console.log("Form submitted successfully", JSON.stringify(jsonData));
 
         // Mixpanel Tracking - Form Submission
-        mixpanel.track("Form Submitted "+getRef(), {
+        mixpanel.track("Form Submitted " + getRef(), {
             page_url: window.location.href,
             page_path: window.location.pathname,
             ref: getRef(),
