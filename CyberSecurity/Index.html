@@ -137,7 +137,7 @@
                         'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
             })(window, document, 'script', 'dataLayer', 'GTM-KDD6JHKZ');</script>
     <!-- End Google Tag Manager -->
-     <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
@@ -286,9 +286,10 @@
                             <div>
                                 <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Full
                                     Name</label>
-                                <input name="name" required
+                                <input name="name" required pattern="[A-Za-z ]+"
+                                    title="Only letters and spaces are allowed"
                                     class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
-                                    placeholder="e.g. Rahul Sharma" type="text" />
+                                    placeholder="e.g. Rahul" type="text" />
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Email
@@ -302,7 +303,7 @@
                                     Number</label>
                                 <input id="phone" name="phone" required
                                     class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-white/20"
-                                    placeholder="98765 43210" type="tel" />
+                                    placeholder="7034395811" type="tel" />
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-white/40 uppercase mb-2 ml-1">Current
@@ -1912,9 +1913,7 @@
         }
 
         // ===== ZOHO FORM SUBMISSION =====
-        async function submitToZohoInbound(formData) {
-            const zohoUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB1/formperma/MlgqF1S9xojwbt5CM9eO5QAF3mIBcpQPLDOlMDT3LlE/htmlRecords/submit';
-
+        async function submitToZoho(formData, zohoUrl, type) {
             // Split name into first and last
             const fullName = formData.name.trim();
             const nameParts = fullName.split(' ');
@@ -1942,51 +1941,24 @@
             zohoData.append('PhoneNumber_countrycodeval', '+' + dialCode); // Country code with +
             zohoData.append('Dropdown', formData.status);
 
-            // Submit to Zoho (using no-cors mode as Zoho forms typically require it)
-            try {
-                const response = await fetch(zohoUrl, {
-                    method: 'POST',
-                    body: zohoData,
-                    mode: 'no-cors'
-                });
+            // Append UTM Parameters
+            if (formData.utm_source) zohoData.append('utm_source', formData.utm_source);
+            if (formData.utm_medium) zohoData.append('utm_medium', formData.utm_medium);
+            if (formData.utm_campaign) zohoData.append('utm_campaign', formData.utm_campaign);
+            if (formData.utm_term) zohoData.append('utm_term', formData.utm_term);
+            if (formData.utm_content) zohoData.append('utm_content', formData.utm_content);
+            if (formData.utm_id) zohoData.append('utm_id', formData.utm_id);
+            if (formData.utm_adgroup) zohoData.append('utm_adgroup', formData.utm_adgroup);
+            if (formData.utm_matchtype) zohoData.append('utm_matchtype', formData.utm_matchtype);
+            if (formData.utm_audience) zohoData.append('utm_audience', formData.utm_audience);
+            if (formData.utm_adgroupid) zohoData.append('utm_adgroupid', formData.utm_adgroupid);
+            if (formData.utm_network) zohoData.append('utm_network', formData.utm_network);
+            if (formData.utm_placement) zohoData.append('utm_placement', formData.utm_placement);
+            if (formData.ref) zohoData.append('ref', formData.ref);
+            if (formData.zf_referrer_name) zohoData.append('zf_referrer_name', formData.zf_referrer_name);
+            if (formData.zf_redirect_url) zohoData.append('zf_redirect_url', formData.zf_redirect_url);
+            if (formData.zc_gad) zohoData.append('zc_gad', formData.zc_gad);
 
-                console.log('Zoho Inbound submission completed');
-                return { success: true };
-            } catch (error) {
-                console.error('Zoho Inbound submission error:', error);
-                throw error;
-            }
-        }
-
-        async function submitToZohoOutbound(formData) {
-            const zohoUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB/formperma/LNTk96VNzIw6auSYie23tHTzmIbvsPVPggvZE8wJOvI/htmlRecords/submit';
-
-            // Split name into first and last
-            const fullName = formData.name.trim();
-            const nameParts = fullName.split(' ');
-            const firstName = nameParts[0];
-            const lastName = nameParts.slice(1).join(' ') || firstName;
-
-            // Prepare Zoho form data
-            const zohoData = new FormData();
-            zohoData.append('Name_First', firstName);
-            zohoData.append('Name_Last', lastName);
-            zohoData.append('Email', formData.email);
-            // For Zoho, we need separate dial code and number
-            const dialCode = formData.countryCode;
-            const fullPhone = formData.phone;
-            // Remove + from full phone if present
-            const cleanPhone = fullPhone.startsWith('+') ? fullPhone.substring(1) : fullPhone;
-
-            // Get the number part by removing the dial code from the start
-            let numberPart = cleanPhone;
-            if (cleanPhone.startsWith(dialCode)) {
-                numberPart = cleanPhone.substring(dialCode.length);
-            }
-
-            zohoData.append('PhoneNumber_countrycode', numberPart); // Just the number (without country code)
-            zohoData.append('PhoneNumber_countrycodeval', '+' + dialCode); // Country code with +
-            zohoData.append('Dropdown', formData.status);
 
             // Submit to Zoho (using no-cors mode as Zoho forms typically require it)
             try {
@@ -1996,10 +1968,10 @@
                     mode: 'no-cors'
                 });
 
-                console.log('Zoho Outbound submission completed');
+                // console.log(`Zoho ${type} submission completed`);
                 return { success: true };
             } catch (error) {
-                console.error('Zoho Outbound submission error:', error);
+                console.error(`Zoho ${type} submission error:`, error);
                 throw error;
             }
         }
@@ -2021,7 +1993,7 @@
                     throw new Error(`Server responded with status: ${response.status}`);
                 }
 
-                console.log('Server submission completed');
+                // console.log('Server submission completed');
                 return await response.json();
             } catch (error) {
                 console.error('Server submission error:', error);
@@ -2033,7 +2005,7 @@
         // ===== GOOGLE SHEET SUBMISSION (Placeholder) =====
         async function submitToGoogleSheet(data) {
             // TODO: Replace with actual Google Apps Script Web App URL
-            const googleSheetUrl = '';
+            const googleSheetUrl = 'https://script.google.com/macros/s/AKfycbyFWDSRxY1PDoGP_lRILpum5NdGCK2mwEVXqDcpRH61UTFZKfZZAjvX2J1HZZY-7a_iEQ/exec';
 
             if (!googleSheetUrl) {
                 console.warn('Google Sheet URL not provided. Skipping submission.');
@@ -2051,7 +2023,7 @@
                     body: JSON.stringify(data)
                 });
 
-                console.log('Google Sheet submission request sent');
+                // console.log('Google Sheet submission request sent');
                 return { success: true };
             } catch (error) {
                 console.error('Google Sheet submission error:', error);
@@ -2124,7 +2096,18 @@
                             utm_campaign: formData.get('utm_campaign'),
                             utm_content: formData.get('utm_content'),
                             utm_term: formData.get('utm_term'),
-                            ref: formData.get('ref')
+                            ref: formData.get('ref'),
+                            // Extra Params for destinations that support them
+                            utm_id: formData.get('utm_id'),
+                            utm_adgroup: formData.get('utm_adgroup'),
+                            utm_matchtype: formData.get('utm_matchtype'),
+                            utm_audience: formData.get('utm_audience'),
+                            utm_adgroupid: formData.get('utm_adgroupid'),
+                            utm_network: formData.get('utm_network'),
+                            utm_placement: formData.get('utm_placement'),
+                            zf_referrer_name: formData.get('zf_referrer_name'),
+                            zf_redirect_url: formData.get('zf_redirect_url'),
+                            zc_gad: formData.get('zc_gad')
                         };
 
                         // Prepare server/sheet data object
@@ -2160,30 +2143,58 @@
                             "domain": "Cyber Security",
                             "duration": 15,
                             "currentStatus": status,
-                            "source": "CyberSecurity-Learningclub"
+                            "source": "CyberSecurity-Learningclub",
                         };
+
+                        const googlesheetData = {
+                            name: name,
+                            email: email,
+                            mobile: countryCode + phone,
+                            employment_status: status,
+                            educational_qualification: "", // Not collected
+                            about_you: "Interested in learn CyberSecurity", // Hardcoded
+                            enquiry_source: "CyberSecurity-Learningclub Website",
+                            utm_source: submissionData.utm_source || "",
+                            utm_medium: submissionData.utm_medium || "",
+                            utm_campaign: submissionData.utm_campaign || "",
+                            utm_term: submissionData.utm_term || "",
+                            utm_content: submissionData.utm_content || "",
+                            utm_network: submissionData.utm_network || "",
+                            utm_device: "", // Not collected explicitly
+                            utm_location: "", // Not collected explicitly
+                            utm_campaignid: "", // Not collected explicitly (or map to utm_id if preferred)
+                            utm_adgroupid: submissionData.utm_adgroupid || "",
+                            utm_audience: submissionData.utm_audience || "",
+                            utm_placement: submissionData.utm_placement || "",
+                            utm_matchtype: submissionData.utm_matchtype || "",
+                            utm_adgroup: submissionData.utm_adgroup || "",
+                            ref: submissionData.ref || ""
+                        }
 
                         // Execute all submissions in parallel
                         const submissions = [];
 
                         // 1. Zoho Submission
+                        const zohoInboundUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB1/formperma/MlgqF1S9xojwbt5CM9eO5QAF3mIBcpQPLDOlMDT3LlE/htmlRecords/submit';
+                        const zohoOutboundUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB/formperma/LNTk96VNzIw6auSYie23tHTzmIbvsPVPggvZE8wJOvI/htmlRecords/submit';
+
                         if (utmSource === 'youtube_malayalam') {
-                            submissions.push(submitToZohoInbound(submissionData));
+                            submissions.push(submitToZoho(submissionData, zohoInboundUrl, 'Inbound'));
                         } else {
-                            submissions.push(submitToZohoOutbound(submissionData));
+                            submissions.push(submitToZoho(submissionData, zohoOutboundUrl, 'Outbound'));
                         }
 
                         // 2. Server Submission
                         submissions.push(submitToOwnServer(serverData));
 
                         // 3. Google Sheet Submission
-                        submissions.push(submitToGoogleSheet(serverData));
+                        submissions.push(submitToGoogleSheet(googlesheetData));
 
                         // Wait for all to complete (or fail) - we use Promise.allSettled to ensure 
                         // one failure doesn't block the UI success state
                         await Promise.allSettled(submissions);
 
-                        console.log('All submission attempts finished');
+                        // console.log('All submission attempts finished');
 
                         // Track conversion with Meta Pixel (if available)
                         if (typeof fbq !== 'undefined') {
@@ -2437,14 +2448,7 @@
         });
     </script>
 
-    <!-- Google Analytics (Replace with your GA4 Measurement ID) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
+
 
     <!-- Meta Pixel Code (Replace with your Pixel ID) -->
     <script>
@@ -2528,14 +2532,14 @@
     </div>
     <!-- Ref handling + session storage for Mixpanel tracking -->
     <script>
-            (function () {
-                const params = new URLSearchParams(window.location.search);
-                const ref = params.get("ref");
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const ref = params.get("ref");
 
-                if (ref) {
-                    sessionStorage.setItem("ref", ref);
-                }
-            })();
+            if (ref) {
+                sessionStorage.setItem("ref", ref);
+            }
+        })();
 
         function getRef() {
             return sessionStorage.getItem("ref") || "direct";
