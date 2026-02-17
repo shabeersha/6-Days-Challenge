@@ -13,6 +13,17 @@
     <!-- Intl-Tel-Input CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KDD6JHKZ');</script>
+    <!-- End Google Tag Manager -->
     <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
@@ -54,6 +65,10 @@
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDD6JHKZ" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
@@ -420,6 +435,7 @@
     <script src="js/script.js"></script>
 
 
+
     <!-- Ref handling + session storage for Mixpanel tracking -->
     <script>
             (function () {
@@ -441,7 +457,7 @@
     </script>
 
     <script>
-        mixpanel.track("Page View - Pro Learning Tips By Jobin - "+getRef(), {
+        mixpanel.track("Page View - Pro Learning Tips By Jobin - " + getRef(), {
             page_url: window.location.href,
             page_path: window.location.pathname,
             ref: getRef(),

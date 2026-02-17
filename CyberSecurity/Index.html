@@ -85,6 +85,7 @@
             background-size: 20px 20px;
         }
     </style>
+
     <!-- intl-tel-input CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.12/build/css/intlTelInput.css">
 
@@ -126,9 +127,62 @@
         ]
     }
     </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-KDD6JHKZ');</script>
+    <!-- End Google Tag Manager -->
+     <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '24870027019336969');
+        fbq('track', 'PageView-CyberSecurity-LearningClub-Website');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=24870027019336969&ev=PageView-6DaysChallenge-2026NewYearOffer&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+    <!-- Mixpanel Code -->
+    <script type="text/javascript">
+        (function (e, c) {
+            if (!c.__SV) {
+                var l, h; window.mixpanel = c; c._i = []; c.init = function (q, r, f) {
+                    function t(d, a) { var g = a.split("."); 2 == g.length && (d = d[g[0]], a = g[1]); d[a] = function () { d.push([a].concat(Array.prototype.slice.call(arguments, 0))) } } var b = c; "undefined" !== typeof f ? b = c[f] = [] : f = "mixpanel"; b.people = b.people || []; b.toString = function (d) { var a = "mixpanel"; "mixpanel" !== f && (a += "." + f); d || (a += " (stub)"); return a }; b.people.toString = function () { return b.toString(1) + ".people (stub)" }; l = "disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders start_session_recording stop_session_recording people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+                    for (h = 0; h < l.length; h++)t(b, l[h]); var n = "set set_once union unset remove delete".split(" "); b.get_group = function () { function d(p) { a[p] = function () { b.push([g, [p].concat(Array.prototype.slice.call(arguments, 0))]) } } for (var a = {}, g = ["get_group"].concat(Array.prototype.slice.call(arguments, 0)), m = 0; m < n.length; m++)d(n[m]); return a }; c._i.push([q, r, f])
+                }; c.__SV = 1.2; var k = e.createElement("script"); k.type = "text/javascript"; k.async = !0; k.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" ===
+                    e.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; e = e.getElementsByTagName("script")[0]; e.parentNode.insertBefore(k, e)
+            }
+        })(document, window.mixpanel || [])
+
+        mixpanel.init('cc3ab3c8977f2ebe699225d4ebaa15ca', {
+            autocapture: true,
+            record_sessions_percent: 100,
+        })
+
+    </script>
+    <!-- Mixpanel Code End -->
+
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-white selection:bg-primary selection:text-black">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDD6JHKZ" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Sticky Header -->
     <header
         class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 py-4">
@@ -1859,7 +1913,7 @@
 
         // ===== ZOHO FORM SUBMISSION =====
         async function submitToZohoInbound(formData) {
-            const zohoUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurity2/formperma/T-wYQknFnuYVHWhG26-NGiuy5arKHMFnf5eKc4kTSUw/htmlRecords/submit';
+            const zohoUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB1/formperma/MlgqF1S9xojwbt5CM9eO5QAF3mIBcpQPLDOlMDT3LlE/htmlRecords/submit';
 
             // Split name into first and last
             const fullName = formData.name.trim();
@@ -1872,8 +1926,20 @@
             zohoData.append('Name_First', firstName);
             zohoData.append('Name_Last', lastName);
             zohoData.append('Email', formData.email);
-            zohoData.append('PhoneNumber_countrycode', formData.phone); // Full phone with country code
-            zohoData.append('PhoneNumber_countrycodeval', '+' + formData.countryCode); // Country code with +
+            // For Zoho, we need separate dial code and number
+            const dialCode = formData.countryCode;
+            const fullPhone = formData.phone;
+            // Remove + from full phone if present
+            const cleanPhone = fullPhone.startsWith('+') ? fullPhone.substring(1) : fullPhone;
+
+            // Get the number part by removing the dial code from the start
+            let numberPart = cleanPhone;
+            if (cleanPhone.startsWith(dialCode)) {
+                numberPart = cleanPhone.substring(dialCode.length);
+            }
+
+            zohoData.append('PhoneNumber_countrycode', numberPart); // Just the number (without country code)
+            zohoData.append('PhoneNumber_countrycodeval', '+' + dialCode); // Country code with +
             zohoData.append('Dropdown', formData.status);
 
             // Submit to Zoho (using no-cors mode as Zoho forms typically require it)
@@ -1893,7 +1959,7 @@
         }
 
         async function submitToZohoOutbound(formData) {
-            const zohoUrl = 'https://forms.zohopublic.in/brototype/form/PythonDjangoRegisterNow1/formperma/2blLdf9uOxRRDuj5AYBZgGFfwImv5Gb5KmVRgIKqsWc/htmlRecords/submit';
+            const zohoUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB/formperma/LNTk96VNzIw6auSYie23tHTzmIbvsPVPggvZE8wJOvI/htmlRecords/submit';
 
             // Split name into first and last
             const fullName = formData.name.trim();
@@ -1906,8 +1972,20 @@
             zohoData.append('Name_First', firstName);
             zohoData.append('Name_Last', lastName);
             zohoData.append('Email', formData.email);
-            zohoData.append('PhoneNumber_countrycode', formData.phone); // Full phone with country code
-            zohoData.append('PhoneNumber_countrycodeval', '+' + formData.countryCode); // Country code with +
+            // For Zoho, we need separate dial code and number
+            const dialCode = formData.countryCode;
+            const fullPhone = formData.phone;
+            // Remove + from full phone if present
+            const cleanPhone = fullPhone.startsWith('+') ? fullPhone.substring(1) : fullPhone;
+
+            // Get the number part by removing the dial code from the start
+            let numberPart = cleanPhone;
+            if (cleanPhone.startsWith(dialCode)) {
+                numberPart = cleanPhone.substring(dialCode.length);
+            }
+
+            zohoData.append('PhoneNumber_countrycode', numberPart); // Just the number (without country code)
+            zohoData.append('PhoneNumber_countrycodeval', '+' + dialCode); // Country code with +
             zohoData.append('Dropdown', formData.status);
 
             // Submit to Zoho (using no-cors mode as Zoho forms typically require it)
@@ -1923,6 +2001,61 @@
             } catch (error) {
                 console.error('Zoho Outbound submission error:', error);
                 throw error;
+            }
+        }
+
+        // ===== SERVER SUBMISSION =====
+        async function submitToOwnServer(data) {
+            const serverUrl = 'https://test-app.brototype.com/api/users/student';
+
+            try {
+                const response = await fetch(serverUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server responded with status: ${response.status}`);
+                }
+
+                console.log('Server submission completed');
+                return await response.json();
+            } catch (error) {
+                console.error('Server submission error:', error);
+                // We don't throw here to avoid blocking other submissions or the success message
+                return { success: false, error: error.message };
+            }
+        }
+
+        // ===== GOOGLE SHEET SUBMISSION (Placeholder) =====
+        async function submitToGoogleSheet(data) {
+            // TODO: Replace with actual Google Apps Script Web App URL
+            const googleSheetUrl = '';
+
+            if (!googleSheetUrl) {
+                console.warn('Google Sheet URL not provided. Skipping submission.');
+                return { success: false, skipped: true };
+            }
+
+            try {
+                // Using no-cors validation as Google Scripts often require it for simple posts
+                const response = await fetch(googleSheetUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                console.log('Google Sheet submission request sent');
+                return { success: true };
+            } catch (error) {
+                console.error('Google Sheet submission error:', error);
+                return { success: false, error: error.message };
             }
         }
 
@@ -1994,15 +2127,63 @@
                             ref: formData.get('ref')
                         };
 
-                        // Submit to Zoho Inbound if utm_source is youtube_malayalam
-                        if (utmSource === 'youtube_malayalam') {
-                            await submitToZohoInbound(submissionData);
-                            console.log('Form submitted to Zoho Inbound');
+                        // Prepare server/sheet data object
+                        // Split name for server data (same logic as Zoho)
+                        const serverName = name.trim();
+                        const serverNameParts = serverName.split(' ');
+                        const serverFirstName = serverNameParts[0];
+                        const serverLastName = serverNameParts.slice(1).join(' ') || serverFirstName;
+
+                        // Formatting phone number
+                        // phone is full international (e.g. +917979797979)
+                        // countryCode is dial code (e.g. 91)
+                        let serverMobile = phone;
+                        const serverDialCodeStr = countryCode ? countryCode.toString() : '';
+
+                        // Remove + from start
+                        let cleanServerPhone = serverMobile.startsWith('+') ? serverMobile.substring(1) : serverMobile;
+
+                        // Remove dial code from start
+                        if (cleanServerPhone.startsWith(serverDialCodeStr)) {
+                            serverMobile = cleanServerPhone.substring(serverDialCodeStr.length);
                         } else {
-                            // Submit to Zoho Outbound for all other traffic
-                            await submitToZohoOutbound(submissionData);
-                            console.log('Form submitted to Zoho Outbound');
+                            serverMobile = cleanServerPhone; // Fallback
                         }
+
+                        const serverData = {
+                            "firstName": serverFirstName,
+                            "lastName": serverLastName,
+                            "mobile": serverMobile,
+                            "countryCode": "+" + serverDialCodeStr,
+                            "email": email,
+                            "language": "Malayalam",
+                            "domain": "Cyber Security",
+                            "duration": 15,
+                            "currentStatus": status,
+                            "source": "CyberSecurity-Learningclub"
+                        };
+
+                        // Execute all submissions in parallel
+                        const submissions = [];
+
+                        // 1. Zoho Submission
+                        if (utmSource === 'youtube_malayalam') {
+                            submissions.push(submitToZohoInbound(submissionData));
+                        } else {
+                            submissions.push(submitToZohoOutbound(submissionData));
+                        }
+
+                        // 2. Server Submission
+                        submissions.push(submitToOwnServer(serverData));
+
+                        // 3. Google Sheet Submission
+                        submissions.push(submitToGoogleSheet(serverData));
+
+                        // Wait for all to complete (or fail) - we use Promise.allSettled to ensure 
+                        // one failure doesn't block the UI success state
+                        await Promise.allSettled(submissions);
+
+                        console.log('All submission attempts finished');
 
                         // Track conversion with Meta Pixel (if available)
                         if (typeof fbq !== 'undefined') {
@@ -2345,6 +2526,35 @@
             </p>
         </div>
     </div>
+    <!-- Ref handling + session storage for Mixpanel tracking -->
+    <script>
+            (function () {
+                const params = new URLSearchParams(window.location.search);
+                const ref = params.get("ref");
+
+                if (ref) {
+                    sessionStorage.setItem("ref", ref);
+                }
+            })();
+
+        function getRef() {
+            return sessionStorage.getItem("ref") || "direct";
+        }
+
+        function getTrafficSource() {
+            return getRef() === "direct" ? "direct" : "referral";
+        }
+    </script>
+
+    <script>
+        mixpanel.track("PageView - CyberSecurity-Learningclub-Website - " + getRef(), {
+            page_url: window.location.href,
+            page_path: window.location.pathname,
+            ref: getRef(),
+            traffic_source: getTrafficSource()
+        });
+    </script>
+    <!-- Mixpanel Code End -->
 
 </body>
 
