@@ -127,17 +127,17 @@
         ]
     }
     </script>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-                w[l] = w[l] || []; w[l].push({
-                    'gtm.start':
-                        new Date().getTime(), event: 'gtm.js'
-                }); var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-KDD6JHKZ');</script>
-    <!-- End Google Tag Manager -->
-     <!-- Meta Pixel Code -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6KLG0JJ1J2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6KLG0JJ1J2');
+    </script>
+    <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
@@ -179,10 +179,7 @@
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-white selection:bg-primary selection:text-black">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDD6JHKZ" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Sticky Header -->
     <header
         class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 py-4">
@@ -2528,14 +2525,14 @@
     </div>
     <!-- Ref handling + session storage for Mixpanel tracking -->
     <script>
-            (function () {
-                const params = new URLSearchParams(window.location.search);
-                const ref = params.get("ref");
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const ref = params.get("ref");
 
-                if (ref) {
-                    sessionStorage.setItem("ref", ref);
-                }
-            })();
+            if (ref) {
+                sessionStorage.setItem("ref", ref);
+            }
+        })();
 
         function getRef() {
             return sessionStorage.getItem("ref") || "direct";
