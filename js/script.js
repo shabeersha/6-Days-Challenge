@@ -378,6 +378,8 @@ registrationForm.addEventListener('submit', (e) => {
     let isValid = true;
     const formData = new FormData(registrationForm);
     const data = Object.fromEntries(formData.entries());
+    console.log(data,"/////////////////");
+
 
     // Simple validation
     const validateField = (id, condition) => {
@@ -458,8 +460,20 @@ registrationForm.addEventListener('submit', (e) => {
             ? '6DaysChallenge-2026NewYearOffer'
             : '6DaysChallenge-Graduates';
 
-        if (typeof fbq === 'function') {
+        // if (typeof fbq === 'function') {
+        //     fbq('track', 'Lead');
+        // }
+
+        if (data.utm_source == "admeta malayalam") {
+            console.log("Admeta Malayalam");
             fbq('track', 'Lead');
+
+        } else if (data.utm_source == "google ads malayalam") {
+            console.log("Google Ads Malayalam");
+            gtag('event', 'conversion', {
+                'send_to': 'AW-10890430926/v4VLCNyz2_obEM6T-8go'
+            });
+
         }
     }
 
