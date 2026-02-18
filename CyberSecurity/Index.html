@@ -2149,7 +2149,7 @@
                         const googlesheetData = {
                             name: name,
                             email: email,
-                            mobile: countryCode + phone,
+                            mobile: phone,
                             employment_status: status,
                             educational_qualification: "", // Not collected
                             about_you: "Interested in learn CyberSecurity", // Hardcoded
@@ -2178,17 +2178,22 @@
                         const zohoInboundUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB1/formperma/MlgqF1S9xojwbt5CM9eO5QAF3mIBcpQPLDOlMDT3LlE/htmlRecords/submit';
                         const zohoOutboundUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB/formperma/LNTk96VNzIw6auSYie23tHTzmIbvsPVPggvZE8wJOvI/htmlRecords/submit';
 
-                        if (utmSource === 'youtube_malayalam') {
-                            submissions.push(submitToZoho(submissionData, zohoInboundUrl, 'Inbound'));
-                        } else {
-                            submissions.push(submitToZoho(submissionData, zohoOutboundUrl, 'Outbound'));
-                        }
+
+                        console.log("submissionData",submissionData);
+                        console.log("serverData",serverData);
+                        console.log("googlesheetData",googlesheetData);
+
+                        // if (utmSource === 'youtube_malayalam') {
+                        //     submissions.push(submitToZoho(submissionData, zohoInboundUrl, 'Inbound'));
+                        // } else {
+                        //     submissions.push(submitToZoho(submissionData, zohoOutboundUrl, 'Outbound'));
+                        // }
 
                         // 2. Server Submission
-                        submissions.push(submitToOwnServer(serverData));
+                        // submissions.push(submitToOwnServer(serverData));
 
                         // 3. Google Sheet Submission
-                        submissions.push(submitToGoogleSheet(googlesheetData));
+                        // submissions.push(submitToGoogleSheet(googlesheetData));
 
                         // Wait for all to complete (or fail) - we use Promise.allSettled to ensure 
                         // one failure doesn't block the UI success state
