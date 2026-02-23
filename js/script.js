@@ -378,7 +378,6 @@ registrationForm.addEventListener('submit', (e) => {
     let isValid = true;
     const formData = new FormData(registrationForm);
     const data = Object.fromEntries(formData.entries());
-    console.log(data,"/////////////////");
 
 
     // Simple validation
@@ -435,17 +434,23 @@ registrationForm.addEventListener('submit', (e) => {
             duration: Number(data['duration']) // Ensure number type
         };
 
-        const mainServerRequest = fetch(mainServerURL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(jsonData)
-        }).catch(error => console.error('Main Server API Error:', error));
-
-        // Execute both (Fire and forget from UI perspective)
-        Promise.all([googleSheetRequest, mainServerRequest]);
-        // console.log("Form submitted successfully", JSON.stringify(jsonData));
+        fetch(mainServerURL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(jsonData),
+        })
+          .then((response) => {
+            if (response.ok) {
+              gtag_report_conversion();
+            } else {
+              console.error("Server error");
+            }
+          })
+          .catch((error) => {
+            console.error("Main Server API Error:", error);
+          });
 
         // Mixpanel Tracking - Form Submission
         mixpanel.track("Form Submitted " + getRef(), {
