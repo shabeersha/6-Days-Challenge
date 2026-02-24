@@ -2190,10 +2190,10 @@
                         // }
 
                         // 2. Server Submission
-                        // submissions.push(submitToOwnServer(serverData));
+                        submissions.push(submitToOwnServer(serverData));
 
                         // 3. Google Sheet Submission
-                        // submissions.push(submitToGoogleSheet(googlesheetData));
+                        submissions.push(submitToGoogleSheet(googlesheetData));
 
                         // Wait for all to complete (or fail) - we use Promise.allSettled to ensure 
                         // one failure doesn't block the UI success state
