@@ -2183,11 +2183,11 @@
                         console.log("serverData",serverData);
                         console.log("googlesheetData",googlesheetData);
 
-                        // if (utmSource === 'youtube_malayalam') {
-                        //     submissions.push(submitToZoho(submissionData, zohoInboundUrl, 'Inbound'));
-                        // } else {
-                        //     submissions.push(submitToZoho(submissionData, zohoOutboundUrl, 'Outbound'));
-                        // }
+                        if (utmSource === 'youtube_malayalam') {
+                            submissions.push(submitToZoho(submissionData, zohoInboundUrl, 'Inbound'));
+                        } else {
+                            submissions.push(submitToZoho(submissionData, zohoOutboundUrl, 'Outbound'));
+                        }
 
                         // 2. Server Submission
                         submissions.push(submitToOwnServer(serverData));
