@@ -452,6 +452,40 @@ registrationForm.addEventListener('submit', (e) => {
             console.error("Main Server API Error:", error);
           });
 
+        // 3. Submit to SuperLeap (Background)
+        const superLeapURL = 'https://v1hooks.superleap.com/3jZLLY/3jZLLY_H2sjFRx8xYIOrXhKIaoN';
+        const countryCode = iti ? "+" + iti.getSelectedCountryData().dialCode : "";
+        
+        const superLeapData = {
+            "form_id": "6-Day-Coding-Journey-Static-Landing-Page",
+            "form_name": "6 Day Coding Journey Static Landing Page",
+            "lead_details": {
+                "first_name": firstName,
+                "last_name": lastName,
+                "email": data['email'],
+                "phone_number": `${countryCode} ${data['mobile']}`,
+                "employment_status": data['currentStatus'],
+            },
+            "timestamp": new Date().toISOString()
+        };
+
+        fetch(superLeapURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(superLeapData),
+            mode: 'no-cors'
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.error("SuperLeap Webhook Error");
+            }
+        })
+        .catch(error => {
+            console.error("SuperLeap Error:", error);
+        });
+
         // Mixpanel Tracking - Form Submission
         mixpanel.track("Form Submitted " + getRef(), {
             page_url: window.location.href,
