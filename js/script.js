@@ -452,6 +452,57 @@ registrationForm.addEventListener('submit', (e) => {
             console.error("Main Server API Error:", error);
           });
 
+        // 3. Submit to SuperLeap (Background)
+        const superLeapURL = 'https://v1hooks.superleap.com/3jZLLY/3jZLLY_H2sjFRx8xYIOrXhKIaoN';
+        const countryCode = iti ? "+" + iti.getSelectedCountryData().dialCode : "";
+        
+        const superLeapData = {
+            "form_id": "6-Day-Coding-Journey-Static-Landing-Page",
+            "form_name": "6 Day Coding Journey Static Landing Page",
+            "lead_details": {
+                "first_name": firstName,
+                "last_name": lastName,
+                "email": data['email'],
+                "phone_number": `${countryCode} ${data['mobile']}`,
+                "employment_status": data['currentStatus'],
+            },
+            "marketing_details": {
+                "utm_source": data['utm_source'] || "",
+                "utm_medium": data['utm_medium'] || "",
+                "utm_campaign": data['utm_campaign'] || "",
+                "utm_term": data['utm_term'] || "",
+                "utm_content": data['utm_content'] || "",
+                "utm_network": data['utm_network'] || "",
+                "utm_device": data['utm_device'] || "",
+                "utm_location": data['utm_location'] || "",
+                "utm_campaignid": data['utm_campaignid'] || "",
+                "utm_adgroupid": data['utm_adgroupid'] || "",
+                "utm_audience": data['utm_audience'] || "",
+                "utm_placement": data['utm_placement'] || "",
+                "utm_matchtype": data['utm_matchtype'] || "",
+                "utm_adgroup": data['utm_adgroup'] || "",
+                "ref": data['ref'] || "",
+            },
+            "timestamp": new Date().toISOString(),
+        };
+
+        fetch(superLeapURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(superLeapData),
+            mode: 'no-cors'
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.error("SuperLeap Webhook Error");
+            }
+        })
+        .catch(error => {
+            console.error("SuperLeap Error:", error);
+        });
+
         // Mixpanel Tracking - Form Submission
         mixpanel.track("Form Submitted " + getRef(), {
             page_url: window.location.href,
@@ -521,7 +572,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'zf_referrer_name', 'zf_redirect_url', 'zc_gad',
                 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
                 'utm_id', 'utm_adgroup', 'utm_matchtype', 'utm_audience',
-                'utm_adgroupid', 'ref', 'utm_network', 'utm_placement', 'utm_hp'
+                'utm_adgroupid', 'ref', 'utm_network', 'utm_placement', 'utm_hp',
+                'utm_device', 'utm_location', 'utm_campaignid'
             ];
 
             trackingParams.forEach(param => {
