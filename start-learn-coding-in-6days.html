@@ -84,6 +84,42 @@
         }
     </script>
     <!-- End Google Tag Manager -->
+
+    <!-- Form Validation Styles -->
+    <style>
+        /* Error state for form fields */
+        .form-group .error-message {
+            display: none;
+            color: #ef4444;
+            font-size: 0.78rem;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        .form-group.error .error-message {
+            display: block;
+        }
+        .form-group.error input,
+        .form-group.error select {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.18) !important;
+            animation: shake 0.35s ease;
+        }
+        /* Country code selector error state */
+        .form-group.error .iti {
+            border-radius: 8px;
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.18) !important;
+        }
+        .form-group.error .iti__selected-country {
+            border-color: #ef4444 !important;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%       { transform: translateX(-6px); }
+            40%       { transform: translateX(6px); }
+            60%       { transform: translateX(-4px); }
+            80%       { transform: translateX(4px); }
+        }
+    </style>
 </head>
 
 <body>
@@ -393,7 +429,7 @@
                             <div>
                                 <input type="tel" id="mobile" name="mobile" placeholder="Phone number" required>
                             </div>
-                            <span class="error-message">Enter a valid number</span>
+                            <span class="error-message">Enter a valid phone number for the selected country</span>
                         </div>
                         <div class="form-group">
                             <label for="currentStatus">Current Status</label>

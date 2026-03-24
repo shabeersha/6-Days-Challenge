@@ -340,27 +340,80 @@ if (phoneInput) {
         if (countryList) {
             countryList.setAttribute('data-lenis-prevent', '');
         } else {
-            // Retry briefly if not found immediately (though it should be sync)
             setTimeout(addLenisPrevent, 50);
         }
     };
     addLenisPrevent();
 
-    // New: Handle scroll on modal to close/blur dropdown to prevent floating
+    // Allow only digits — no spaces, no letters
+    phoneInput.addEventListener('keydown', (e) => {
+        const allowed = [
+            'Backspace','Delete','Tab','Escape','Enter','ArrowLeft','ArrowRight','Home','End'
+        ];
+        if (allowed.includes(e.key)) return;
+        if (!/^[0-9]$/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+    phoneInput.addEventListener('input', () => {
+        // Strip any non-digit characters that may have been pasted
+        phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
+    });
+
+    // Handle scroll on modal to close/blur dropdown
     const modalContent = document.querySelector('.modal');
     if (modalContent) {
         modalContent.addEventListener('scroll', () => {
-            if (iti) {
-                // Determine if the dropdown is open by checking if the input has the 'iti__open' class? 
-                // Actually intl-tel-input doesn't expose an easy 'isOpen' method, but we can check standard classes or just blur.
-                // Or use the public method to close if available, but v17 doesn't have a simple close() method exposed easily without accessing private instance data usually.
-                // Hacking: trigger a click on body or blur the input.
-                phoneInput.blur();
-                // internal method if accessible, or just let blur handle it (standard behavior usually closes on blur)
-            }
+            if (iti) { phoneInput.blur(); }
         }, { passive: true });
     }
 }
+
+// ─── Real-time blur validation ───────────────────────────────────────────────
+const blurValidate = (id, condition, msgOverride) => {
+    const field = document.getElementById(id);
+    if (!field) return;
+    field.addEventListener('blur', () => {
+        const group = field.closest('.form-group');
+        if (!condition()) {
+            group.classList.add('error');
+        } else {
+            group.classList.remove('error');
+        }
+    });
+};
+
+// Name: cannot be empty
+blurValidate('full-name', () => document.getElementById('full-name').value.trim() !== '');
+
+// Email: proper format check
+const isValidEmail = (v) =>
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/.test(v);
+blurValidate('email', () => isValidEmail(document.getElementById('email').value.trim()));
+
+// Phone: country-aware using intl-tel-input
+blurValidate('mobile', () => iti ? iti.isValidNumber() : /^[0-9]{7,15}$/.test(document.getElementById('mobile').value));
+
+// Selector: must have a real (non-empty) value selected
+blurValidate('currentStatus', () => {
+    const v = document.getElementById('currentStatus').value;
+    return v && v !== '';
+});
+// Also fire on change for the select so feedback is instant
+(function() {
+    const sel = document.getElementById('currentStatus');
+    if (sel) {
+        sel.addEventListener('change', () => {
+            const group = sel.closest('.form-group');
+            if (sel.value && sel.value !== '') {
+                group.classList.remove('error');
+            } else {
+                group.classList.add('error');
+            }
+        });
+    }
+})();
+// ─────────────────────────────────────────────────────────────────────────────
 
 // Form Validation and Submission
 registrationForm.addEventListener('submit', (e) => {
@@ -379,13 +432,13 @@ registrationForm.addEventListener('submit', (e) => {
     const formData = new FormData(registrationForm);
     const data = Object.fromEntries(formData.entries());
 
-
-    // Simple validation
+    // Full validation on submit
     const validateField = (id, condition) => {
         const field = document.getElementById(id);
         const group = field.closest('.form-group');
         if (!condition) {
             group.classList.add('error');
+            if (isValid) field.focus(); // Focus first invalid field
             isValid = false;
         } else {
             group.classList.remove('error');
@@ -393,9 +446,9 @@ registrationForm.addEventListener('submit', (e) => {
     };
 
     validateField('full-name', data['full-name'].trim() !== '');
-    validateField('email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data['email']));
-    // validateField('mobile', /^[0-9]{10}$/.test(data['mobile'])); // Old strict 10 digit check
-    validateField('mobile', /^[0-9]{7,15}$/.test(data['mobile'])); // More lenient for international
+    validateField('email', isValidEmail(data['email'].trim()));
+    // Use intl-tel-input's built-in country-aware validation
+    validateField('mobile', iti ? iti.isValidNumber() : /^[0-9]{7,15}$/.test(data['mobile']));
     validateField('currentStatus', data['currentStatus'] && data['currentStatus'] !== '');
 
 
