@@ -2018,35 +2018,6 @@
             }
         }
 
-        // ===== GOOGLE SHEET SUBMISSION (Placeholder) =====
-        async function submitToGoogleSheet(data) {
-            // TODO: Replace with actual Google Apps Script Web App URL
-            const googleSheetUrl = 'https://script.google.com/macros/s/AKfycbyFWDSRxY1PDoGP_lRILpum5NdGCK2mwEVXqDcpRH61UTFZKfZZAjvX2J1HZZY-7a_iEQ/exec';
-
-            if (!googleSheetUrl) {
-                console.warn('Google Sheet URL not provided. Skipping submission.');
-                return { success: false, skipped: true };
-            }
-
-            try {
-                // Using no-cors validation as Google Scripts often require it for simple posts
-                const response = await fetch(googleSheetUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                // console.log('Google Sheet submission request sent');
-                return { success: true };
-            } catch (error) {
-                console.error('Google Sheet submission error:', error);
-                return { success: false, error: error.message };
-            }
-        }
-
         // ===== FORM SUBMISSION LOGIC =====
         document.addEventListener('DOMContentLoaded', function () {
             const forms = document.querySelectorAll('form');
@@ -2162,54 +2133,19 @@
                             "source": "CyberSecurity-Learningclub",
                         };
 
-                        const googlesheetData = {
-                            name: name,
-                            email: email,
-                            mobile: phone,
-                            employment_status: status,
-                            educational_qualification: "", // Not collected
-                            about_you: "Interested in learn CyberSecurity", // Hardcoded
-                            enquiry_source: "CyberSecurity-Learningclub Website",
-                            utm_source: submissionData.utm_source || "",
-                            utm_medium: submissionData.utm_medium || "",
-                            utm_campaign: submissionData.utm_campaign || "",
-                            utm_term: submissionData.utm_term || "",
-                            utm_content: submissionData.utm_content || "",
-                            utm_network: submissionData.utm_network || "",
-                            utm_device: "", // Not collected explicitly
-                            utm_location: "", // Not collected explicitly
-                            utm_campaignid: "", // Not collected explicitly (or map to utm_id if preferred)
-                            utm_adgroupid: submissionData.utm_adgroupid || "",
-                            utm_audience: submissionData.utm_audience || "",
-                            utm_placement: submissionData.utm_placement || "",
-                            utm_matchtype: submissionData.utm_matchtype || "",
-                            utm_adgroup: submissionData.utm_adgroup || "",
-                            ref: submissionData.ref || ""
-                        }
-
-                        // Execute all submissions in parallel
+                        // Execute submission to Cloudflare Gateway CRM & Own Server
                         const submissions = [];
 
-                        // 1. Zoho Submission
-                        const zohoInboundUrl = 'https://forms.zohopublic.in/brototype/form/CybersecurityIB/formperma/UnJKh_-2yOo2Sfi9FHaLJCVQp_frHMPBObTV3FUjQ9E/htmlRecords/submit';
-                        const zohoOutboundUrl = 'https://forms.zohopublic.in/brototype/form/CyberSecurityMasteryIB/formperma/LNTk96VNzIw6auSYie23tHTzmIbvsPVPggvZE8wJOvI/htmlRecords/submit';
-
+                        // 1. Cloudflare Gateway CRM Submission (Hides internal CRM endpoints)
+                        const cloudflareGatewayUrl = 'https://yt-ml.quiet-dew-3468.workers.dev/';
 
                         console.log("submissionData", submissionData);
                         console.log("serverData", serverData);
-                        console.log("googlesheetData", googlesheetData);
 
-                        if (utmSource === 'youtube_malayalam') {
-                            submissions.push(submitToZoho(submissionData, zohoInboundUrl, 'Inbound'));
-                        } else {
-                            submissions.push(submitToZoho(submissionData, zohoOutboundUrl, 'Outbound'));
-                        }
+                        submissions.push(submitToZoho(submissionData, cloudflareGatewayUrl, 'CloudflareGateway'));
 
                         // 2. Server Submission
                         submissions.push(submitToOwnServer(serverData));
-
-                        // 3. Google Sheet Submission
-                        submissions.push(submitToGoogleSheet(googlesheetData));
 
                         // Wait for all to complete (or fail) - we use Promise.allSettled to ensure 
                         // one failure doesn't block the UI success state
@@ -2531,14 +2467,21 @@
 
             <!-- Description -->
             <p class="text-center text-white/60 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
-                Click the button below to get tech support
+                Start watching your free tutorial now or reach out for technical support
             </p>
 
             <!-- CTA Buttons -->
-            <div class="space-y-4 mb-6 flex justify-center">
+            <div class="space-y-4 mb-6 flex flex-col items-center justify-center">
+                <!-- Watch Free Tutorial Button -->
+                <a href="https://learn.brototype.com/course/Cybersecurity_Tutorial_Challenge" target="_blank"
+                    class="inline-flex w-full max-w-md bg-primary text-black font-black text-lg px-8 py-5 rounded-xl text-center transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(188,249,6,0.3)] items-center justify-center gap-2">
+                    <span class="material-symbols-outlined">play_circle</span>
+                    <span>Watch Free Tutorial</span>
+                </a>
+
                 <!-- Tech Support Button -->
                 <a href="https://support.brototype.com/" target="_blank"
-                    class="inline-flex max-w-md bg-white/5 border border-white/10 hover:border-primary/50 text-white font-bold text-lg px-8 py-5 rounded-xl text-center transition-all hover:bg-white/10 items-center justify-center gap-1">
+                    class="inline-flex w-full max-w-md bg-white/5 border border-white/10 hover:border-primary/50 text-white font-bold text-base md:text-lg px-8 py-4 rounded-xl text-center transition-all hover:bg-white/10 items-center justify-center gap-2">
                     <span class="material-symbols-outlined">support_agent</span>
                     <span class="hidden sm:inline">Click here to Ask Your Technical Doubts</span>
                     <span class="sm:hidden">Get Tech Support</span>
