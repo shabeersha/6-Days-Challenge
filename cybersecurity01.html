@@ -1928,67 +1928,40 @@
             });
         }
 
-        // ===== ZOHO FORM SUBMISSION =====
-        async function submitToZoho(formData, zohoUrl, type) {
-            // Split name into first and last
-            const fullName = formData.name.trim();
-            const nameParts = fullName.split(' ');
-            const firstName = nameParts[0];
-            const lastName = nameParts.slice(1).join(' ') || firstName;
+        // ===== CRM / CLOUDFLARE GATEWAY SUBMISSION =====
+        async function submitToCrmGateway(formData, gatewayUrl) {
+            // Ensure phone has leading +
+            const fullPhone = formData.phone.startsWith('+') ? formData.phone : ('+' + formData.phone);
+            const countryCodeStr = (formData.countryCode || '').toString().replace(/^\+/, '');
 
-            // Prepare Zoho form data
-            const zohoData = new FormData();
-            zohoData.append('Name_First', firstName);
-            zohoData.append('Name_Last', lastName);
-            zohoData.append('Email', formData.email);
-            // For Zoho, we need separate dial code and number
-            const dialCode = formData.countryCode;
-            const fullPhone = formData.phone;
-            // Remove + from full phone if present
-            const cleanPhone = fullPhone.startsWith('+') ? fullPhone.substring(1) : fullPhone;
+            const crmPayload = {
+                update: true,
+                data: [
+                    {
+                        name: formData.name.trim(),
+                        email: formData.email.trim(),
+                        phone: fullPhone,
+                        enquiry_source: "cybersecurity-free-tutorial-landingpage",
+                        employment_status: formData.status,
+                        country_code: countryCodeStr
+                    }
+                ]
+            };
 
-            // Get the number part by removing the dial code from the start
-            let numberPart = cleanPhone;
-            if (cleanPhone.startsWith(dialCode)) {
-                numberPart = cleanPhone.substring(dialCode.length);
-            }
-
-            zohoData.append('PhoneNumber_countrycode', numberPart); // Just the number (without country code)
-            zohoData.append('PhoneNumber_countrycodeval', '+' + dialCode); // Country code with +
-            zohoData.append('Dropdown', formData.status);
-
-            // Append UTM Parameters
-            if (formData.utm_source) zohoData.append('utm_source', formData.utm_source);
-            if (formData.utm_medium) zohoData.append('utm_medium', formData.utm_medium);
-            if (formData.utm_campaign) zohoData.append('utm_campaign', formData.utm_campaign);
-            if (formData.utm_term) zohoData.append('utm_term', formData.utm_term);
-            if (formData.utm_content) zohoData.append('utm_content', formData.utm_content);
-            if (formData.utm_id) zohoData.append('utm_id', formData.utm_id);
-            if (formData.utm_adgroup) zohoData.append('utm_adgroup', formData.utm_adgroup);
-            if (formData.utm_matchtype) zohoData.append('utm_matchtype', formData.utm_matchtype);
-            if (formData.utm_audience) zohoData.append('utm_audience', formData.utm_audience);
-            if (formData.utm_adgroupid) zohoData.append('utm_adgroupid', formData.utm_adgroupid);
-            if (formData.utm_network) zohoData.append('utm_network', formData.utm_network);
-            if (formData.utm_placement) zohoData.append('utm_placement', formData.utm_placement);
-            if (formData.ref) zohoData.append('ref', formData.ref);
-            if (formData.zf_referrer_name) zohoData.append('zf_referrer_name', formData.zf_referrer_name);
-            if (formData.zf_redirect_url) zohoData.append('zf_redirect_url', formData.zf_redirect_url);
-            if (formData.zc_gad) zohoData.append('zc_gad', formData.zc_gad);
-
-
-            // Submit to Zoho (using no-cors mode as Zoho forms typically require it)
             try {
-                const response = await fetch(zohoUrl, {
+                const response = await fetch(gatewayUrl, {
                     method: 'POST',
-                    body: zohoData,
-                    mode: 'no-cors'
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(crmPayload)
                 });
 
-                // console.log(`Zoho ${type} submission completed`);
                 return { success: true };
             } catch (error) {
-                console.error(`Zoho ${type} submission error:`, error);
-                throw error;
+                console.error('CRM Gateway submission error:', error);
+                // Return fallback so other promises / UI flow do not crash
+                return { success: false, error: error.message };
             }
         }
 
@@ -2142,7 +2115,7 @@
                         console.log("submissionData", submissionData);
                         console.log("serverData", serverData);
 
-                        submissions.push(submitToZoho(submissionData, cloudflareGatewayUrl, 'CloudflareGateway'));
+                        submissions.push(submitToCrmGateway(submissionData, cloudflareGatewayUrl));
 
                         // 2. Server Submission
                         submissions.push(submitToOwnServer(serverData));
